@@ -408,7 +408,7 @@ export const PROJECTS = [
       'Stepped Dimming Sequences',
       'Failsafe Manual Override',
     ],
-    imageSlot: '/projects/placeholder-lighting.svg',
+    imageSlot: '/projects/royal-theater.jpg',
     highlight: 'Stepped ceiling illumination sequencing with zero operator latency.',
   },
   {
@@ -431,7 +431,7 @@ export const PROJECTS = [
       'Centralized Monitoring Vision',
       'Scheduled Sequence Engine',
     ],
-    imageSlot: '/projects/placeholder-dashboard.svg',
+    imageSlot: '/projects/sangeetha-multiplex.jpg',
     highlight: 'Proposed 4-screen multiplex architecture featuring distributed edge nodes.',
   },
   {

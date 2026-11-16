@@ -120,6 +120,8 @@ export default function ProjectsPage() {
           {filteredProjects.map((project, idx) => {
             const isExpanded = expandedProjectId === project.id;
             const isCompleted = project.statusType === 'completed';
+            const isPhoto =
+              project.imageSlot.endsWith('.jpg') || project.imageSlot.endsWith('.png');
 
             return (
               <AnimatedSection key={project.id} delay={idx * 0.1}>
@@ -130,25 +132,42 @@ export default function ProjectsPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     {/* Visual / Image Slot Area */}
                     <div className="lg:col-span-5 p-6 sm:p-8">
-                      <div className="relative rounded-2xl bg-[#090D14] border border-white/10 p-6 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[340px] overflow-hidden group">
+                      <div
+                        className={`relative rounded-2xl bg-[#090D14] border border-white/10 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[340px] overflow-hidden group ${
+                          isPhoto ? 'p-0' : 'p-6'
+                        }`}
+                      >
                         <Image
                           src={project.imageSlot}
                           alt={project.title}
-                          width={380}
-                          height={260}
-                          className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(0,212,255,0.18)] group-hover:scale-105 transition-transform duration-500"
+                          width={480}
+                          height={340}
+                          className={
+                            isPhoto
+                              ? 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 min-h-[280px] sm:min-h-[340px]'
+                              : 'w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(0,212,255,0.18)] group-hover:scale-105 transition-transform duration-500'
+                          }
                         />
 
+                        {isPhoto && (
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none" />
+                        )}
+
                         {/* Image Slot Badge */}
-                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-text-muted">
-                          <span className="flex items-center gap-1.5 text-accent">
-                            <Camera className="w-3.5 h-3.5" /> Project Visual Slot
+                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3 py-1.5 rounded-lg bg-black/85 backdrop-blur-md border border-white/10 text-[11px] font-mono text-text-muted z-10">
+                          <span
+                            className={`flex items-center gap-1.5 ${
+                              isPhoto ? 'text-emerald-400 font-semibold' : 'text-accent'
+                            }`}
+                          >
+                            <Camera className="w-3.5 h-3.5" />{' '}
+                            {isPhoto ? 'Verified Site Photo' : 'Project Visual Slot'}
                           </span>
-                          <span>Schematic Ready</span>
+                          <span>{isPhoto ? 'Real Installation' : 'Schematic Ready'}</span>
                         </div>
 
-                        <div className="absolute top-4 left-4">
-                          <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-black/80 border border-white/10 text-white font-medium">
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-black/85 backdrop-blur-md border border-white/10 text-white font-medium">
                             {project.category}
                           </span>
                         </div>
@@ -279,8 +298,9 @@ export default function ProjectsPage() {
               </span>
               <p className="leading-relaxed text-text-secondary">
                 MR.Engineers maintains complete transparency regarding completed versus conceptual
-                architectures. High-resolution site installation photographs for Vijayan Cinemas and
-                Royal Theater are scheduled for archival integration upon client sign-off.
+                architectures. Verified site facility photographs for Royal Theater (Pallipalayam) and
+                Sangeetha Multiplex (Karumattampatti) have been integrated into our live archive, while
+                Vijayan Cinemas site photography is scheduled for integration upon client sign-off.
               </p>
             </div>
           </div>

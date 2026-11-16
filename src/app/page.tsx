@@ -386,35 +386,50 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-            {PROJECTS.map((project, idx) => (
-              <AnimatedSection key={project.id} delay={idx * 0.1}>
-                <div className="rounded-2xl border border-white/[0.08] bg-[#10151D]/75 overflow-hidden hover:border-white/20 transition-all duration-300 group flex flex-col h-full">
-                  {/* Schematic / Project Image Slot */}
-                  <div className="relative h-48 bg-[#090D14] flex items-center justify-center border-b border-white/[0.06] overflow-hidden p-5">
-                    <Image
-                      src={project.imageSlot}
-                      alt={project.title}
-                      width={380}
-                      height={240}
-                      className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.15)] group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-black/70 backdrop-blur-md border border-white/10 text-accent font-medium">
-                        {project.category}
-                      </span>
+            {PROJECTS.map((project, idx) => {
+              const isPhoto =
+                project.imageSlot.endsWith('.jpg') || project.imageSlot.endsWith('.png');
+
+              return (
+                <AnimatedSection key={project.id} delay={idx * 0.1}>
+                  <div className="rounded-2xl border border-white/[0.08] bg-[#10151D]/75 overflow-hidden hover:border-white/20 transition-all duration-300 group flex flex-col h-full">
+                    {/* Project Image / Schematic Slot */}
+                    <div
+                      className={`relative h-48 bg-[#090D14] flex items-center justify-center border-b border-white/[0.06] overflow-hidden ${
+                        isPhoto ? 'p-0' : 'p-5'
+                      }`}
+                    >
+                      <Image
+                        src={project.imageSlot}
+                        alt={project.title}
+                        width={400}
+                        height={260}
+                        className={
+                          isPhoto
+                            ? 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500'
+                            : 'w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.15)] group-hover:scale-105 transition-transform duration-500'
+                        }
+                      />
+                      {isPhoto && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none" />
+                      )}
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-black/80 backdrop-blur-md border border-white/10 text-accent font-medium">
+                          {project.category}
+                        </span>
+                      </div>
+                      <div className="absolute top-3 right-3 z-10">
+                        <span
+                          className={`px-2 py-0.5 rounded text-[10px] font-mono font-medium backdrop-blur-md ${
+                            project.statusType === 'completed'
+                              ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                              : 'bg-amber-500/20 text-[#FFBE1A] border border-amber-500/30'
+                          }`}
+                        >
+                          {project.statusType === 'completed' ? 'COMMISSIONED' : 'CONCEPT / R&D'}
+                        </span>
+                      </div>
                     </div>
-                    <div className="absolute top-3 right-3">
-                      <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-mono font-medium ${
-                          project.statusType === 'completed'
-                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                            : 'bg-amber-500/10 text-[#FFBE1A] border border-amber-500/20'
-                        }`}
-                      >
-                        {project.statusType === 'completed' ? 'COMMISSIONED' : 'CONCEPT / R&D'}
-                      </span>
-                    </div>
-                  </div>
 
                   {/* Project Details */}
                   <div className="p-5 flex flex-col justify-between flex-grow">
@@ -453,7 +468,8 @@ export default function HomePage() {
                   </div>
                 </div>
               </AnimatedSection>
-            ))}
+            );
+          })}
           </div>
         </div>
       </section>
