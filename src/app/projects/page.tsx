@@ -8,13 +8,14 @@ import {
   Layers,
   Cpu,
   ArrowRight,
-  Filter,
   CheckCircle2,
   AlertCircle,
-  ExternalLink,
   ChevronDown,
   ChevronUp,
+  MapPin,
+  Clock,
   Sparkles,
+  Camera,
 } from 'lucide-react';
 import {
   SectionHeading,
@@ -24,16 +25,18 @@ import {
   TechBadge,
 } from '@/components/ui';
 import { AnimatedSection } from '@/lib/animations';
-import { PROJECTS, PROJECT_CATEGORIES } from '@/lib/constants';
+import { PROJECTS } from '@/lib/constants';
 
 export default function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedFilter, setSelectedFilter] = useState<'All' | 'Completed' | 'Concept'>('All');
   const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
 
-  const filteredProjects =
-    selectedCategory === 'All'
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === selectedCategory);
+  const filteredProjects = PROJECTS.filter((p) => {
+    if (selectedFilter === 'All') return true;
+    if (selectedFilter === 'Completed') return p.statusType === 'completed';
+    if (selectedFilter === 'Concept') return p.statusType === 'concept';
+    return true;
+  });
 
   const toggleExpand = (id: string) => {
     setExpandedProjectId((prev) => (prev === id ? null : id));
@@ -47,7 +50,7 @@ export default function ProjectsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ════════════════════════════════════════════════════════════════════
-            PAGE HERO
+            HERO SECTION
            ════════════════════════════════════════════════════════════════════ */}
         <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
           <motion.div
@@ -64,7 +67,7 @@ export default function ProjectsPage() {
             className="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase"
           >
             Proven Projects &amp; <br />
-            <span className="gradient-text">Engineered Solutions</span>
+            <span className="gradient-text">Engineered Systems</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -72,152 +75,162 @@ export default function ProjectsPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-base sm:text-xl text-text-secondary leading-relaxed"
           >
-            A curated showcase of our engineering initiatives across cinema automation, industrial
-            control systems, IoT telemetry, and web dashboards.
+            An accurate portfolio of our specialized automation installations and future
+            architectural concepts across Tamil Nadu. Every project status is reported with complete
+            engineering integrity.
           </motion.p>
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            CATEGORY FILTER TABS
+            STATUS FILTER TABS
            ════════════════════════════════════════════════════════════════════ */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 sm:mb-16">
-          {PROJECT_CATEGORIES.map((cat) => (
+        <div className="flex items-center justify-center gap-2 mb-16">
+          {(['All', 'Completed', 'Concept'] as const).map((filter) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
-                selectedCategory === cat
-                  ? 'bg-accent text-black font-semibold shadow-[0_0_20px_rgba(0,212,255,0.3)]'
+              key={filter}
+              onClick={() => setSelectedFilter(filter)}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+                selectedFilter === filter
+                  ? 'bg-accent text-black shadow-[0_0_20px_rgba(0,212,255,0.3)]'
                   : 'bg-[#10151D] text-text-secondary hover:text-white border border-white/[0.08]'
               }`}
             >
-              {cat}
+              {filter === 'All'
+                ? 'All Deployments (3)'
+                : filter === 'Completed'
+                ? 'Completed & Commissioned (2)'
+                : 'Concepts & Future R&D (1)'}
             </button>
           ))}
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            PROJECTS GRID
+            PROJECTS DETAILED LIST
            ════════════════════════════════════════════════════════════════════ */}
-        <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-          <AnimatePresence>
-            {filteredProjects.map((project) => {
-              const isExpanded = expandedProjectId === project.id;
+        <div className="space-y-16 mb-24">
+          {filteredProjects.map((project, idx) => {
+            const isExpanded = expandedProjectId === project.id;
+            const isCompleted = project.statusType === 'completed';
 
-              return (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
+            return (
+              <AnimatedSection key={project.id} delay={idx * 0.1}>
+                <div
                   id={project.id}
-                  className="scroll-mt-28"
+                  className="rounded-3xl border border-white/[0.08] bg-[#10151D]/80 backdrop-blur-xl overflow-hidden hover:border-white/20 transition-all duration-300"
                 >
-                  <div className="rounded-3xl border border-white/[0.08] bg-[#10151D]/80 backdrop-blur-xl overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col h-full group">
-                    {/* Visual Schematics / Image Header */}
-                    <div className="relative h-60 sm:h-72 bg-[#090D14] flex items-center justify-center p-6 border-b border-white/[0.06] overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={420}
-                        height={280}
-                        className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(0,212,255,0.18)] group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 rounded-md text-xs font-mono bg-black/70 backdrop-blur-md border border-white/10 text-accent font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                      <div className="absolute top-4 right-4">
-                        <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-medium">
-                          VERIFIED ARCHITECTURE
-                        </span>
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    {/* Visual / Image Slot Area */}
+                    <div className="lg:col-span-5 p-6 sm:p-8">
+                      <div className="relative rounded-2xl bg-[#090D14] border border-white/10 p-6 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[340px] overflow-hidden group">
+                        <Image
+                          src={project.imageSlot}
+                          alt={project.title}
+                          width={380}
+                          height={260}
+                          className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(0,212,255,0.18)] group-hover:scale-105 transition-transform duration-500"
+                        />
+
+                        {/* Image Slot Badge */}
+                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-text-muted">
+                          <span className="flex items-center gap-1.5 text-accent">
+                            <Camera className="w-3.5 h-3.5" /> Project Visual Slot
+                          </span>
+                          <span>Schematic Ready</span>
+                        </div>
+
+                        <div className="absolute top-4 left-4">
+                          <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-black/80 border border-white/10 text-white font-medium">
+                            {project.category}
+                          </span>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Content Section */}
-                    <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+                    {/* Details Column */}
+                    <div className="lg:col-span-7 p-6 sm:p-8 lg:pl-0 space-y-6">
                       <div>
-                        <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
-                          {project.title}
-                        </h2>
-                        <p className="mt-3 text-text-secondary text-sm leading-relaxed">
-                          {project.overview}
-                        </p>
-
-                        {/* Tech Stack Badges */}
-                        <div className="mt-5 flex flex-wrap gap-1.5">
-                          {project.technologies.map((tech) => (
-                            <TechBadge key={tech} text={tech} />
-                          ))}
+                        <div className="flex flex-wrap items-center gap-3 mb-2">
+                          <span
+                            className={`px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider ${
+                              isCompleted
+                                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                                : 'bg-amber-500/10 text-[#FFBE1A] border border-amber-500/30'
+                            }`}
+                          >
+                            ● {project.status}
+                          </span>
+                          <span className="text-xs font-mono text-text-muted flex items-center gap-1">
+                            <MapPin className="w-3.5 h-3.5 text-accent" /> {project.location}
+                          </span>
                         </div>
 
-                        {/* Expandable Technical Deep-Dive */}
-                        <AnimatePresence>
-                          {isExpanded && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="mt-6 pt-6 border-t border-white/[0.08] space-y-4 overflow-hidden"
-                            >
-                              <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06]">
-                                <div className="flex items-center gap-2 text-xs font-mono text-[#FFBE1A] font-semibold mb-1">
-                                  <AlertCircle className="w-4 h-4" /> PROBLEM SPECIFICATION
-                                </div>
-                                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                                  {project.problem}
-                                </p>
-                              </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                          {project.title}
+                        </h2>
 
-                              <div className="p-4 rounded-xl bg-black/40 border border-accent/20">
-                                <div className="flex items-center gap-2 text-xs font-mono text-accent font-semibold mb-1">
-                                  <CheckCircle2 className="w-4 h-4" /> ENGINEERED RESOLUTION
-                                </div>
-                                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                                  {project.solution}
-                                </p>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                        <p className="text-text-secondary text-sm sm:text-base leading-relaxed">
+                          {project.overview}
+                        </p>
                       </div>
 
-                      {/* Footer Actions */}
-                      <div className="mt-6 pt-5 border-t border-white/[0.06] flex items-center justify-between">
-                        <button
-                          onClick={() => toggleExpand(project.id)}
-                          className="text-xs font-mono text-text-secondary hover:text-white flex items-center gap-1.5 py-1 px-3 rounded-lg bg-white/[0.04] border border-white/[0.06] transition-colors"
-                        >
-                          <span>{isExpanded ? 'Hide Architecture' : 'View Architecture'}</span>
-                          {isExpanded ? (
-                            <ChevronUp className="w-3.5 h-3.5" />
-                          ) : (
-                            <ChevronDown className="w-3.5 h-3.5" />
-                          )}
-                        </button>
+                      {/* Problem & Solution Accordion */}
+                      <div className="space-y-3 pt-2">
+                        <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06]">
+                          <span className="text-xs font-mono text-[#FFBE1A] font-semibold block mb-1">
+                            PROBLEM SPECIFICATION:
+                          </span>
+                          <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                            {project.problem}
+                          </p>
+                        </div>
 
+                        <div className="p-4 rounded-xl bg-black/40 border border-accent/20">
+                          <span className="text-xs font-mono text-accent font-semibold block mb-1">
+                            ENGINEERED SOLUTION:
+                          </span>
+                          <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                            {project.solution}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div>
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-text-muted block mb-2 font-semibold">
+                          TECHNOLOGY STACK:
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.technologies.map((t) => (
+                            <TechBadge key={t} text={t} />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Inquiry Action */}
+                      <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                        <span className="text-xs font-mono text-text-muted">
+                          ID: {project.id} //
+                        </span>
                         <Link
-                          href={`/contact?project=${encodeURIComponent(project.title)}`}
-                          className="text-xs font-semibold text-accent hover:underline flex items-center gap-1"
+                          href={`/contact?service=Cinema%20Automation&project=${encodeURIComponent(
+                            project.title
+                          )}`}
+                          className="btn-primary text-xs py-2 px-4 group"
                         >
-                          <span>Inquire Similar</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <span>Inquire Similar Solution</span>
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                         </Link>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
+                </div>
+              </AnimatedSection>
+            );
+          })}
+        </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            DOCUMENTATION TRANSPARENCY NOTICE
+            TRANSPARENCY DISCLAIMER
            ════════════════════════════════════════════════════════════════════ */}
         <AnimatedSection>
           <div className="p-6 rounded-2xl border border-white/10 bg-[#10151D]/60 flex items-start gap-4 max-w-3xl mx-auto mb-20 text-xs text-text-muted">
@@ -226,13 +239,12 @@ export default function ProjectsPage() {
             </div>
             <div>
               <span className="font-mono text-white block font-semibold mb-1">
-                ENGINEERING DOCUMENTATION INTEGRITY
+                ENGINEERING ACCURACY COMMITMENT
               </span>
               <p className="leading-relaxed text-text-secondary">
-                To respect proprietary industrial installations and non-disclosure agreements with
-                manufacturing facilities, project imagery above utilizes technical architectural
-                schematics. Project inquiries can be supplemented with technical diagrams upon mutual
-                consultation.
+                MR.Engineers maintains complete transparency regarding completed versus conceptual
+                architectures. High-resolution site installation photographs for Vijayan Cinemas and
+                Royal Theater are scheduled for archival integration upon client sign-off.
               </p>
             </div>
           </div>
@@ -241,20 +253,20 @@ export default function ProjectsPage() {
         {/* ════════════════════════════════════════════════════════════════════
             BOTTOM CTA
            ════════════════════════════════════════════════════════════════════ */}
-        <section className="p-8 sm:p-12 rounded-3xl border border-white/10 bg-gradient-to-r from-[#10151D] via-[#0D121A] to-[#10151D] text-center">
+        <section className="p-8 sm:p-14 rounded-3xl border border-white/10 bg-gradient-to-r from-[#10151D] via-[#0E131C] to-[#10151D] text-center">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
-              Have a Similar Requirement in Your Facility?
+              Have a Similar Installation in Your Facility?
             </h2>
             <p className="mt-4 text-text-secondary text-sm sm:text-base max-w-xl mx-auto">
-              Our engineering team is ready to analyze your site specifications and develop a tailored
-              automation or embedded solution.
+              Whether you manage a single-screen cinema or an industrial factory line, we can design
+              an automated control system customized to your exact physical layout.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <GradientButton href="/contact" icon={ArrowRight}>
                 Discuss Your Engineering Needs
               </GradientButton>
-              <OutlineButton href="/services">Review All Services</OutlineButton>
+              <OutlineButton href="/services">Review All 9 Services</OutlineButton>
             </div>
           </AnimatedSection>
         </section>

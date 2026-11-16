@@ -18,6 +18,10 @@ import {
   CheckCircle2,
   ArrowUpRight,
   Sparkles,
+  GraduationCap,
+  Users,
+  Compass,
+  Lightbulb,
 } from 'lucide-react';
 import {
   SectionHeading,
@@ -29,16 +33,23 @@ import {
   BrandLogo,
 } from '@/components/ui';
 import { AnimatedSection, staggerContainer, staggerItem } from '@/lib/animations';
-import { BRAND, PROCESS_STEPS, PROJECTS, SERVICES } from '@/lib/constants';
+import {
+  BRAND,
+  PROCESS_STEPS,
+  PROJECTS,
+  SERVICES,
+  FOUNDERS,
+  RND_ROADMAP,
+  ACADEMY_DOMAINS,
+} from '@/lib/constants';
 
-// Technical icons mapping for capabilities
 const capabilityIcons = [
   { id: 'industrial-automation', icon: Settings, color: '#00D4FF' },
-  { id: 'esp32-arduino', icon: CircuitBoard, color: '#FFBE1A' },
-  { id: 'iot-development', icon: Wifi, color: '#00D4FF' },
   { id: 'plc-scada', icon: Cpu, color: '#7C5CFC' },
+  { id: 'esp32-arduino', icon: CircuitBoard, color: '#FFBE1A' },
+  { id: 'iot-solutions', icon: Wifi, color: '#00D4FF' },
+  { id: 'embedded-systems', icon: Layers, color: '#7C5CFC' },
   { id: 'electrical-electronics', icon: Zap, color: '#FFBE1A' },
-  { id: 'web-development', icon: Globe, color: '#00D4FF' },
 ];
 
 export default function HomePage() {
@@ -48,7 +59,7 @@ export default function HomePage() {
       <div className="absolute inset-0 grid-background pointer-events-none opacity-40" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
       <div className="absolute top-2/3 right-10 w-[500px] h-[400px] bg-[#7C5CFC]/10 blur-[140px] pointer-events-none -z-10 rounded-full" />
-      <div className="absolute top-[80%] left-10 w-[450px] h-[350px] bg-[#FFBE1A]/5 blur-[130px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-[85%] left-10 w-[450px] h-[350px] bg-[#FFBE1A]/5 blur-[130px] pointer-events-none -z-10 rounded-full" />
 
       {/* ════════════════════════════════════════════════════════════════════════
           HERO SECTION
@@ -76,20 +87,20 @@ export default function HomePage() {
             className="space-y-2 sm:space-y-4"
           >
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] uppercase">
-              <span className="block text-white">ENGINEERING IDEAS.</span>
-              <span className="block gradient-text">BUILDING WHAT&apos;S NEXT.</span>
+              <span className="block text-white">ENGINEERING</span>
+              <span className="block gradient-text">THE FUTURE.</span>
             </h1>
           </motion.div>
 
-          {/* Supporting Text */}
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 sm:mt-8 text-base sm:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed font-normal"
           >
-            We engineer intelligent solutions at the intersection of industrial automation,
-            electronics, IoT and software — transforming ideas into practical innovations.
+            From industrial automation to intelligent IoT solutions, MR.Engineers transforms
+            engineering ideas into practical technology.
           </motion.p>
 
           {/* Action CTAs */}
@@ -100,14 +111,14 @@ export default function HomePage() {
             className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
           >
             <GradientButton
-              href="/services"
+              href="/projects"
               icon={ArrowRight}
               className="w-full sm:w-auto text-base py-3.5 px-8"
             >
-              Explore Our Capabilities
+              Explore Our Work
             </GradientButton>
             <OutlineButton
-              href="/contact"
+              href="/contact?intent=project"
               icon={ArrowUpRight}
               className="w-full sm:w-auto text-base py-3.5 px-8"
             >
@@ -115,35 +126,35 @@ export default function HomePage() {
             </OutlineButton>
           </motion.div>
 
-          {/* Tech Spec Strip */}
+          {/* Technical Spec Strip */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="mt-16 pt-8 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-6 text-left max-w-4xl mx-auto"
           >
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
               <span className="text-xs font-mono text-accent block">DISCIPLINES</span>
               <span className="text-sm font-semibold text-white mt-0.5 block">
-                Industrial &amp; Embedded
+                Automation &amp; Embedded
               </span>
             </div>
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
               <span className="text-xs font-mono text-[#FFBE1A] block">CONNECTIVITY</span>
               <span className="text-sm font-semibold text-white mt-0.5 block">
                 IoT, MQTT &amp; Cloud
               </span>
             </div>
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
               <span className="text-xs font-mono text-accent-secondary block">CONTROLLERS</span>
               <span className="text-sm font-semibold text-white mt-0.5 block">
                 PLCs, ESP32, STM32
               </span>
             </div>
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-              <span className="text-xs font-mono text-white block">EXECUTION</span>
+            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <span className="text-xs font-mono text-white block">LOCATION</span>
               <span className="text-sm font-semibold text-white mt-0.5 block">
-                Turnkey Implementation
+                Erode, Tamil Nadu
               </span>
             </div>
           </motion.div>
@@ -151,12 +162,12 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════════
-          COMPANY INTRODUCTION: Engineering Beyond Boundaries
+          COMPANY INTRODUCTION
          ════════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Column: Heading & Narrative */}
+            {/* Left Narrative */}
             <div className="lg:col-span-7">
               <AnimatedSection>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-[#FFBE1A]/30 bg-[#FFBE1A]/5 text-[#FFBE1A] mb-4">
@@ -164,20 +175,20 @@ export default function HomePage() {
                   Engineering Perspective
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-                  Engineering Beyond <span className="gradient-text">Boundaries.</span>
+                  Practical Engineering for <span className="gradient-text">Real-World Industry.</span>
                 </h2>
                 <div className="mt-6 space-y-4 text-text-secondary text-base sm:text-lg leading-relaxed">
                   <p>
-                    Modern industrial challenges do not fit into rigid technical silos. A smart
-                    factory requires robust electrical circuits, dependable PLC logic, agile edge
-                    microcontrollers, secure wireless telemetry, and intuitive web dashboards.
+                    <strong className="text-white font-medium">MR.Engineers</strong> was founded in
+                    Erode, Tamil Nadu, to bridge the divide between theoretical engineering and
+                    functional, shop-floor reality. We do not just design conceptual schematics; we
+                    wire control panels, write firmware for microcontrollers, commission PLCs, and
+                    build real-time web telemetry.
                   </p>
                   <p>
-                    <strong className="text-white font-medium">MR.Engineers</strong> bridges this
-                    gap. Headquartered in Tamil Nadu&apos;s industrial manufacturing belt, we unite
-                    hands-on hardware prototyping with modern full-stack software architecture. We
-                    don&apos;t just design schematics on paper — we build, test, program, and
-                    commission practical, real-world systems.
+                    From single-touch cinema automation systems installed in Tamil Nadu theaters to
+                    cloud-connected IoT sensor networks, our team approaches every challenge with an
+                    insatiable drive to <em>Learn, Build, and Repeat</em>.
                   </p>
                 </div>
 
@@ -185,12 +196,12 @@ export default function HomePage() {
                   <TechBadge text="Hardware-Software Co-Design" highlight={true} />
                   <TechBadge text="Deterministic Automation" />
                   <TechBadge text="Telemetry & Edge Compute" />
-                  <TechBadge text="Industrial Grade Panels" />
+                  <TechBadge text="Industrial Control Panels" />
                 </div>
               </AnimatedSection>
             </div>
 
-            {/* Right Column: High-Tech Architectural Visual */}
+            {/* Right Architecture Card */}
             <div className="lg:col-span-5">
               <AnimatedSection delay={0.2}>
                 <div className="relative rounded-2xl border border-white/10 bg-[#10151D]/90 p-8 shadow-2xl backdrop-blur-xl overflow-hidden">
@@ -206,40 +217,40 @@ export default function HomePage() {
                   <div className="mt-6 space-y-4 font-mono text-xs">
                     <div className="p-3 rounded-lg bg-black/40 border border-white/[0.06] flex items-center justify-between">
                       <span className="text-text-secondary flex items-center gap-2">
-                        <Cpu className="w-4 h-4 text-accent" /> Logic Controller
+                        <Settings className="w-4 h-4 text-accent" /> Cinema Automation
                       </span>
-                      <span className="text-emerald-400 font-semibold">ONLINE (0.2ms loop)</span>
+                      <span className="text-emerald-400 font-semibold">ACTIVE DEPLOYMENTS</span>
                     </div>
                     <div className="p-3 rounded-lg bg-black/40 border border-white/[0.06] flex items-center justify-between">
                       <span className="text-text-secondary flex items-center gap-2">
-                        <Wifi className="w-4 h-4 text-[#FFBE1A]" /> Edge IoT Gateway
+                        <CircuitBoard className="w-4 h-4 text-[#FFBE1A]" /> ESP32 Edge Logic
                       </span>
-                      <span className="text-emerald-400 font-semibold">MQTT Broker 1883</span>
+                      <span className="text-emerald-400 font-semibold">Wi-Fi &amp; Relay Sync</span>
                     </div>
                     <div className="p-3 rounded-lg bg-black/40 border border-white/[0.06] flex items-center justify-between">
                       <span className="text-text-secondary flex items-center gap-2">
-                        <Terminal className="w-4 h-4 text-accent-secondary" /> Cloud Dashboard
+                        <Cpu className="w-4 h-4 text-accent-secondary" /> Industrial PLC
                       </span>
-                      <span className="text-emerald-400 font-semibold">WebSocket Sync</span>
+                      <span className="text-emerald-400 font-semibold">Ladder Logic</span>
                     </div>
                     <div className="p-3 rounded-lg bg-black/40 border border-white/[0.06] flex items-center justify-between">
                       <span className="text-text-secondary flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-amber-400" /> Power Distribution
+                        <Terminal className="w-4 h-4 text-white" /> Academy &amp; Interns
                       </span>
-                      <span className="text-text-secondary font-semibold">415V 3-Phase</span>
+                      <span className="text-accent font-semibold">Practical Batches</span>
                     </div>
                   </div>
 
                   <div className="mt-6 pt-6 border-t border-white/[0.08] flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-text-muted block">ENGINEERING CORE</span>
-                      <span className="text-sm font-semibold text-white">Full-Spectrum Execution</span>
+                      <span className="text-xs text-text-muted block">FOUNDER-LED EXECUTION</span>
+                      <span className="text-sm font-semibold text-white">Hariprasath J &amp; Santhosh M M</span>
                     </div>
                     <Link
-                      href="/about"
+                      href="/founders"
                       className="text-xs text-accent hover:underline flex items-center gap-1 font-mono"
                     >
-                      Our Philosophy <ArrowRight className="w-3.5 h-3.5" />
+                      Founders <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>
@@ -250,14 +261,14 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════════
-          CORE CAPABILITIES (6 Services)
+          CORE CAPABILITIES
          ════════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#0C1017] relative">
         <div className="max-w-7xl mx-auto">
           <SectionHeading
             eyebrow="Core Capabilities"
             title="Engineered For Industrial Performance"
-            description="Six specialized disciplines delivered with engineering precision — from shop-floor automation to modern web applications."
+            description="Specialized disciplines delivered with engineering rigor — from factory automation and embedded firmware to modern web platforms."
           />
 
           <motion.div
@@ -314,7 +325,7 @@ export default function HomePage() {
                         href={`/services#${service.id}`}
                         className="text-xs font-semibold text-text-secondary group-hover:text-white flex items-center gap-1.5 transition-colors"
                       >
-                        <span>Explore Technical Specs</span>
+                        <span>Explore Specifications</span>
                         <ArrowRight className="w-3.5 h-3.5 text-accent transition-transform group-hover:translate-x-1" />
                       </Link>
                     </div>
@@ -333,7 +344,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════════
-          FEATURED PROJECTS SHOWCASE
+          FEATURED PROJECTS (Real Cinema Automation Deployments)
          ════════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
@@ -341,14 +352,14 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-accent/20 bg-accent/5 text-accent mb-3">
                 <Layers className="w-3.5 h-3.5" />
-                Proven Engineering
+                Proven Deployments
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                 Featured Projects
               </h2>
               <p className="mt-3 text-text-secondary text-base max-w-xl">
-                Actual solution frameworks and completed implementations spanning cinema
-                automation, industrial IoT, and embedded electronics.
+                Real cinema automation deployments and scalable architectural concepts engineered by
+                MR.Engineers in Tamil Nadu.
               </p>
             </div>
             <Link
@@ -360,59 +371,61 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {PROJECTS.slice(0, 4).map((project, idx) => (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {PROJECTS.map((project, idx) => (
               <AnimatedSection key={project.id} delay={idx * 0.1}>
-                <div className="rounded-2xl border border-white/[0.08] bg-[#10151D]/70 overflow-hidden hover:border-white/20 transition-all duration-300 group flex flex-col h-full">
-                  {/* Schematic / Project visual header */}
-                  <div className="relative h-56 sm:h-64 bg-[#090D14] flex items-center justify-center border-b border-white/[0.06] overflow-hidden p-6">
+                <div className="rounded-2xl border border-white/[0.08] bg-[#10151D]/75 overflow-hidden hover:border-white/20 transition-all duration-300 group flex flex-col h-full">
+                  {/* Schematic / Project Image Slot */}
+                  <div className="relative h-52 bg-[#090D14] flex items-center justify-center border-b border-white/[0.06] overflow-hidden p-6">
                     <Image
-                      src={project.image}
+                      src={project.imageSlot}
                       alt={project.title}
-                      width={400}
-                      height={260}
+                      width={380}
+                      height={240}
                       className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.15)] group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-md text-xs font-mono bg-black/60 backdrop-blur-md border border-white/10 text-accent font-medium">
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-black/70 backdrop-blur-md border border-white/10 text-accent font-medium">
                         {project.category}
+                      </span>
+                    </div>
+                    <div className="absolute top-3 right-3">
+                      <span
+                        className={`px-2 py-0.5 rounded text-[10px] font-mono font-medium ${
+                          project.statusType === 'completed'
+                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                            : 'bg-amber-500/10 text-[#FFBE1A] border border-amber-500/20'
+                        }`}
+                      >
+                        {project.statusType === 'completed' ? 'COMMISSIONED' : 'CONCEPT / R&D'}
                       </span>
                     </div>
                   </div>
 
                   {/* Project Details */}
-                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+                  <div className="p-6 flex flex-col justify-between flex-grow">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-accent transition-colors">
+                      <span className="text-xs font-mono text-text-muted block mb-1">
+                        {project.location}
+                      </span>
+                      <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
                         {project.title}
                       </h3>
-                      <p className="mt-3 text-text-secondary text-sm leading-relaxed">
+                      <p className="mt-2 text-text-secondary text-xs sm:text-sm leading-relaxed">
                         {project.overview}
                       </p>
 
-                      <div className="mt-5 space-y-3 pt-5 border-t border-white/[0.06] text-xs font-mono">
-                        <div>
-                          <span className="text-[#FFBE1A] font-semibold block mb-1">
-                            PROBLEM IDENTIFIED:
-                          </span>
-                          <span className="text-text-secondary font-sans leading-normal">
-                            {project.problem}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-accent font-semibold block mb-1">
-                            ENGINEERED SOLUTION:
-                          </span>
-                          <span className="text-text-secondary font-sans leading-normal">
-                            {project.solution}
-                          </span>
-                        </div>
+                      <div className="mt-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
+                        <span className="text-[#FFBE1A] font-semibold block mb-1">HIGHLIGHT:</span>
+                        <span className="text-text-secondary font-sans leading-normal">
+                          {project.highlight}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="mt-6 pt-5 border-t border-white/[0.06] flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.slice(0, 3).map((t) => (
+                    <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                      <div className="flex flex-wrap gap-1">
+                        {project.technologies.slice(0, 2).map((t) => (
                           <TechBadge key={t} text={t} />
                         ))}
                       </div>
@@ -432,40 +445,173 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════════
-          OUR APPROACH (4-Step Process)
+          INNOVATION & R&D TEASER
          ════════════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#090D14] border-t border-white/[0.06]">
+      <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#090D14] border-t border-white/[0.06] relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5">
+              <AnimatedSection>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-accent/20 bg-accent/5 text-accent mb-4">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  R&amp;D Initiative
+                </div>
+                <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase leading-tight">
+                  Building What <br />
+                  <span className="gradient-text">Comes Next.</span>
+                </h2>
+                <p className="mt-5 text-text-secondary text-base leading-relaxed">
+                  Beyond our client systems, we actively run laboratory experiments across Smart
+                  Building Automation, Advanced Industrial IoT, AI-Assisted Diagnostics, and
+                  Multiplex Cinema Controllers.
+                </p>
+                <div className="mt-8">
+                  <GradientButton href="/innovation" icon={ArrowRight}>
+                    Explore Future Roadmap
+                  </GradientButton>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {RND_ROADMAP.slice(0, 4).map((item, idx) => (
+                <AnimatedSection key={item.id} delay={idx * 0.1}>
+                  <div className="p-5 rounded-2xl border border-white/[0.08] bg-[#10151D]/70 backdrop-blur-md h-full flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-accent block mb-1">
+                        {item.phase}
+                      </span>
+                      <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>
+                      <p className="text-xs text-text-secondary leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-white/[0.04] flex flex-wrap gap-1">
+                      {item.technologies.slice(0, 2).map((t) => (
+                        <span key={t} className="text-[10px] font-mono text-text-muted">
+                          #{t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════════
+          MR.ENGINEERS ACADEMY TEASER
+         ════════════════════════════════════════════════════════════════════════ */}
+      <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06] bg-[#0C1017]">
+        <div className="max-w-7xl mx-auto">
+          <div className="p-8 sm:p-14 rounded-3xl border border-white/10 bg-gradient-to-br from-[#10151D] via-[#0E131C] to-[#10151D] relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-8">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#FFBE1A] font-semibold block mb-2">
+                  SKILL DEVELOPMENT &amp; INTERNSHIPS
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
+                  Learn. Build. Engineer.
+                </h2>
+                <p className="mt-4 text-text-secondary text-base max-w-2xl leading-relaxed">
+                  Through the <strong>MR.Engineers Academy</strong>, we provide practical, hands-on
+                  training in Industrial Automation, PLC programming, ESP32 embedded systems, and
+                  IoT development for aspiring engineers and college students.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <TechBadge text="Practical Hardware Wiring" highlight={true} />
+                  <TechBadge text="PLC & Ladder Logic" />
+                  <TechBadge text="ESP32 IoT Prototyping" />
+                  <TechBadge text="Final Year Project Mentorship" />
+                </div>
+              </div>
+
+              <div className="lg:col-span-4 flex flex-col gap-4 sm:items-start lg:items-end">
+                <GradientButton
+                  href="/academy"
+                  icon={ArrowRight}
+                  className="w-full sm:w-auto text-sm py-3 px-6"
+                >
+                  Explore Academy Programs
+                </GradientButton>
+                <OutlineButton
+                  href="/collaborations"
+                  icon={Users}
+                  className="w-full sm:w-auto text-sm py-3 px-6"
+                >
+                  College Collaborations
+                </OutlineButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════════
+          MEET OUR FOUNDERS TEASER
+         ════════════════════════════════════════════════════════════════════════ */}
+      <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
           <SectionHeading
-            eyebrow="Methodology"
-            title="Rigorous Engineering Process"
-            description="From initial feasibility to shop-floor commissioning, every project follows a disciplined engineering workflow."
+            eyebrow="Leadership"
+            title="The People Behind the Vision"
+            description="Founded by practicing engineers committed to hardware-software co-design, deterministic automation, and continuous technical learning."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            {PROCESS_STEPS.map((step, idx) => (
-              <AnimatedSection key={step.number} delay={idx * 0.1}>
-                <div className="relative p-6 sm:p-8 rounded-xl border border-white/[0.08] bg-[#10151D]/60 backdrop-blur-md h-full flex flex-col justify-between group hover:border-accent/40 transition-colors">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {FOUNDERS.map((founder, idx) => (
+              <AnimatedSection key={founder.id} delay={idx * 0.15}>
+                <div className="p-8 rounded-2xl border border-white/10 bg-[#10151D]/80 backdrop-blur-md flex flex-col justify-between h-full group hover:border-white/20 transition-all">
                   <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-4xl sm:text-5xl font-mono font-black text-white/10 group-hover:text-accent/30 transition-colors">
-                        {step.number}
-                      </span>
-                      <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-xs font-mono text-text-muted group-hover:border-accent group-hover:text-accent transition-colors">
-                        ✓
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden border border-white/10 bg-black shrink-0">
+                        <Image
+                          src={founder.imageSlot}
+                          alt={founder.name}
+                          width={64}
+                          height={64}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
+                          {founder.name}
+                        </h3>
+                        <span className="text-xs font-mono text-[#FFBE1A] block">
+                          {founder.title}
+                        </span>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-text-secondary text-sm leading-relaxed">
-                      {step.description}
+
+                    <p className="text-text-secondary text-sm leading-relaxed mb-6">
+                      {founder.bio}
                     </p>
+
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {founder.focusAreas.slice(0, 3).map((area) => (
+                        <TechBadge key={area} text={area} />
+                      ))}
+                    </div>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-white/[0.04]">
-                    <span className="text-[11px] font-mono text-text-muted">
-                      PHASE {step.number} // EXECUTION
-                    </span>
+
+                  <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                    <Link
+                      href="/founders"
+                      className="text-xs font-semibold text-accent hover:underline flex items-center gap-1"
+                    >
+                      <span>Read Full Profile</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <a
+                      href={founder.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono text-text-muted hover:text-[#FFBE1A] transition-colors"
+                    >
+                      Instagram Profile ↗
+                    </a>
                   </div>
                 </div>
               </AnimatedSection>
@@ -477,13 +623,10 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════════
           BRAND PHILOSOPHY: LEARN • BUILD • REPEAT
          ════════════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
-        {/* Glow backdrop */}
-        <div className="absolute inset-0 bg-radial-gradient from-[#FFBE1A]/10 via-transparent to-transparent opacity-60 pointer-events-none" />
-
+      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black border-t border-white/[0.06]">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <AnimatedSection>
-            {/* Logo Emblem Display */}
+            {/* Official Logo Emblem */}
             <div className="flex justify-center mb-8">
               <div className="relative p-1 rounded-2xl bg-gradient-to-br from-white/20 via-[#FFBE1A]/40 to-transparent shadow-[0_0_40px_rgba(255,190,26,0.2)]">
                 <div className="rounded-xl overflow-hidden bg-black p-3">
@@ -515,7 +658,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm font-mono text-text-secondary">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FFBE1A]" />
-                <span>Hands-on Engineering</span>
+                <span>Hands-on Prototyping</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-accent" />
@@ -523,7 +666,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-accent-secondary" />
-                <span>Modern Software Architecture</span>
+                <span>Future Innovation</span>
               </div>
             </div>
           </AnimatedSection>
@@ -541,13 +684,13 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFBE1A]/10 rounded-full blur-3xl pointer-events-none" />
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                Have an idea? <br className="hidden sm:inline" />
-                <span className="gradient-text">Let&apos;s engineer it.</span>
+                Have an engineering idea? <br className="hidden sm:inline" />
+                <span className="gradient-text">Let&apos;s build it together.</span>
               </h2>
 
               <p className="mt-5 text-base sm:text-lg text-text-secondary max-w-xl mx-auto">
-                Whether you need a custom PLC control panel, an IoT monitoring gateway, or a
-                specialized web dashboard, we are ready to build it.
+                From specialized cinema automation panels to IoT infrastructure and academic
+                collaborations, we are ready to engineer your solution.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -568,7 +711,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/[0.06] text-xs text-text-muted font-mono">
-                BASED IN TAMIL NADU, INDIA • SERVING INDUSTRIAL &amp; COMMERCIAL CLIENTS
+                ERODE, TAMIL NADU, INDIA • MR.ENGINEERS
               </div>
             </div>
           </AnimatedSection>

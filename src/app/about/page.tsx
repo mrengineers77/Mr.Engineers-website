@@ -16,6 +16,8 @@ import {
   Activity,
   Award,
   Zap,
+  Users,
+  CheckCircle2,
 } from 'lucide-react';
 import {
   SectionHeading,
@@ -23,43 +25,41 @@ import {
   GradientButton,
   OutlineButton,
   TechBadge,
-  SectionDivider,
-  BrandLogo,
 } from '@/components/ui';
 import { AnimatedSection, staggerContainer, staggerItem } from '@/lib/animations';
-import { BRAND } from '@/lib/constants';
+import { BRAND, FOUNDERS, PROCESS_STEPS } from '@/lib/constants';
 
 export default function AboutPage() {
-  const differentiators = [
+  const coreValues = [
     {
+      title: 'Practical Craftsmanship',
+      desc: 'We value working systems over abstract slides. If code or a circuit doesn’t operate reliably under field conditions, it isn’t finished.',
       icon: Wrench,
-      title: 'Hands-On Engineering Depth',
-      desc: 'We do not sit behind theoretical diagrams. We wire the control cabinets, program the microcontrollers, troubleshoot signals with oscilloscopes, and commission directly on the field.',
       color: '#00D4FF',
     },
     {
+      title: 'Continuous Mastery (Learn)',
+      desc: 'Engineering protocols and semiconductor architectures evolve daily. We constantly master modern chips, frameworks, and communication buses.',
       icon: Cpu,
-      title: 'Unified Hardware & Software',
-      desc: 'Most agencies either only understand software or only assemble electrical panels. We merge both worlds seamlessly, connecting low-level hardware directly to cloud telemetry.',
       color: '#FFBE1A',
     },
     {
-      icon: ShieldCheck,
-      title: 'Practical, Problem-First Design',
-      desc: 'We avoid over-engineering or vanity features. Every capacitor, relay, API route, and database index is chosen to solve a concrete operational problem reliably.',
+      title: 'Relentless Iteration (Repeat)',
+      desc: 'Building a prototype is only step one. We refine schematics, optimize loop timings, eliminate noise, and harden enclosures until industrial perfection is achieved.',
+      icon: Activity,
       color: '#7C5CFC',
     },
     {
-      icon: Layers,
-      title: 'End-to-End Accountability',
-      desc: 'From initial requirement discovery and proof-of-concept testing to final fabrication and deployment, we own the full life cycle with rigorous engineering standards.',
+      title: 'Integrity & Transparency',
+      desc: 'We never misrepresent project readiness, inflate client figures, or invent fake claims. Our work stands on verified engineering merits.',
+      icon: ShieldCheck,
       color: '#00D4FF',
     },
   ];
 
   return (
     <div className="relative overflow-hidden py-12 lg:py-20">
-      {/* Background glow elements */}
+      {/* Background ambient lighting */}
       <div className="absolute top-1/4 -left-40 w-96 h-96 bg-accent/10 blur-[150px] pointer-events-none rounded-full" />
       <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-[#FFBE1A]/10 blur-[150px] pointer-events-none rounded-full" />
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-white/10 bg-[#10151D] text-accent mb-6"
           >
-            <Compass className="w-3.5 h-3.5" /> Company Profile
+            <Compass className="w-3.5 h-3.5" /> Corporate Profile
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
@@ -90,42 +90,43 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-base sm:text-xl text-text-secondary leading-relaxed"
           >
-            MR.Engineers is an emerging engineering and technology enterprise based in Tamil Nadu,
-            India. We bridge the critical gap between heavy industrial physical hardware and modern
-            digital systems.
+            MR.Engineers is an engineering and technology company founded by Hariprasath J and
+            Santhosh M M in Erode, Tamil Nadu. We transform practical engineering ideas into
+            functional industrial technology.
           </motion.p>
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            WHO WE ARE
+            OUR STORY & WHO WE ARE
            ════════════════════════════════════════════════════════════════════ */}
         <section className="mb-24 lg:mb-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <AnimatedSection>
                 <span className="text-xs font-mono uppercase text-[#FFBE1A] tracking-wider block font-semibold">
-                  WHO WE ARE
+                  OUR STORY
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                  An Engineering Collective Creating Practical Technology.
+                  Born in the Industrial Heart of Tamil Nadu.
                 </h2>
                 <div className="space-y-4 text-text-secondary leading-relaxed text-base">
                   <p>
-                    Founded in the energetic industrial belt of Erode, Tamil Nadu,{' '}
-                    <strong className="text-white">MR.Engineers</strong> was established with a
-                    distinct conviction: that the future of automation belongs to those who
-                    understand both electrical circuits and digital code with equal clarity.
+                    MR.Engineers began with a fundamental realization: modern manufacturing,
+                    commercial facilities, and educational institutions often struggle with a
+                    disconnect between heavy electrical machinery and modern software systems.
                   </p>
                   <p>
-                    We operate at the convergence of industrial automation, embedded computing,
-                    wireless IoT communication, and modern application development. Rather than
-                    offering generic consultancy, we actively design, solder, program, wire, and
-                    commission solutions that work flawlessly in demanding operational environments.
+                    Co-Founders <strong className="text-white">Hariprasath J</strong> and{' '}
+                    <strong className="text-white">Santhosh M M</strong> founded MR.Engineers in
+                    Erode to bridge this gap. Starting with cinema auditorium lighting automation
+                    panels and rapid microcontroller prototypes, the company expanded into full-scale
+                    industrial automation, PLC/SCADA architecture, wireless IoT networks, and the
+                    MR.Engineers Academy.
                   </p>
                   <p>
-                    From cinema hall automation systems to cloud-monitored IoT sensors and custom
-                    control panels, our work reflects pragmatic engineering execution built for
-                    continuous reliability.
+                    Today, our work spans commercial cinema automation installations, custom
+                    embedded control boards, research roadmaps, and structured engineering training
+                    for the next generation of builders.
                   </p>
                 </div>
               </AnimatedSection>
@@ -135,18 +136,18 @@ export default function AboutPage() {
               <AnimatedSection delay={0.2}>
                 <div className="p-8 rounded-2xl border border-white/10 bg-[#10151D]/90 shadow-2xl relative overflow-hidden">
                   <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/[0.08]">
-                    <div className="p-2.5 rounded-xl bg-black border border-white/10">
+                    <div className="p-2 rounded-xl bg-black border border-white/10">
                       <Image
                         src="/images/logo.jpg"
                         alt="MR.Engineers"
-                        width={60}
-                        height={60}
+                        width={56}
+                        height={56}
                         className="rounded-lg object-contain"
                       />
                     </div>
                     <div>
                       <h4 className="text-lg font-bold text-white">MR.Engineers</h4>
-                      <p className="text-xs font-mono text-[#FFBE1A]">{BRAND.taglineFormatted}</p>
+                      <p className="text-xs font-mono text-[#FFBE1A]">{BRAND.statement}</p>
                     </div>
                   </div>
 
@@ -156,16 +157,16 @@ export default function AboutPage() {
                       <span className="text-white font-medium">{BRAND.location}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
-                      <span className="text-text-muted">CORE DOMAINS:</span>
-                      <span className="text-accent font-medium">Automation • IoT • Software</span>
+                      <span className="text-text-muted">CO-FOUNDERS:</span>
+                      <span className="text-accent font-medium">Hariprasath J &amp; Santhosh M M</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
-                      <span className="text-text-muted">SPECIALTY:</span>
-                      <span className="text-white font-medium">Hardware-Software Interfacing</span>
+                      <span className="text-text-muted">DISCIPLINES:</span>
+                      <span className="text-white font-medium">Automation • IoT • Software</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-text-muted">COMMUNICATION:</span>
-                      <span className="text-emerald-400 font-medium">Active Inquiries Open</span>
+                      <span className="text-text-muted">TAGLINE:</span>
+                      <span className="text-[#FFBE1A] font-semibold">{BRAND.tagline}</span>
                     </div>
                   </div>
                 </div>
@@ -188,12 +189,12 @@ export default function AboutPage() {
                   OUR VISION
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-4">
-                  Democratizing Advanced Industrial &amp; Embedded Technology
+                  Engineering the Future of Practical Technology
                 </h3>
                 <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
-                  To become a globally respected engineering powerhouse known for transforming
-                  complex technical concepts into robust, accessible, and scalable automation and
-                  IoT systems that empower industries, businesses, and learners.
+                  To become a recognized international technology powerhouse known for practical,
+                  reliable industrial automation, cutting-edge embedded systems, and empowering the
+                  next generation of engineers with real prototyping skills.
                 </p>
               </GlassCard>
             </AnimatedSection>
@@ -207,12 +208,12 @@ export default function AboutPage() {
                   OUR MISSION
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-4">
-                  Engineering Practical Solutions For Tangible Real-World Impact
+                  Transforming Engineering Ideas into Working Reality
                 </h3>
                 <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
                   To engineer dependable, high-efficiency systems through continuous learning,
-                  rigorous experimentation, and uncompromised craftsmanship — bridging electrical,
-                  mechanical, electronic, and software engineering.
+                  disciplined experimentation, and uncompromising craftsmanship — bridging
+                  electrical, embedded, and digital engineering without shortcuts.
                 </p>
               </GlassCard>
             </AnimatedSection>
@@ -220,9 +221,46 @@ export default function AboutPage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════
-            OUR PHILOSOPHY: LEARN • BUILD • REPEAT
+            CORE VALUES
            ════════════════════════════════════════════════════════════════════ */}
-        <section className="mb-24 lg:mb-32 p-8 sm:p-12 rounded-3xl border border-white/10 bg-gradient-to-b from-[#10151D] to-[#0A0E15]">
+        <section className="mb-24 lg:mb-32">
+          <SectionHeading
+            eyebrow="Ethos"
+            title="Our Core Values"
+            description="The foundational principles that guide every circuit we solder and every line of code we deploy."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <AnimatedSection key={v.title} delay={i * 0.08}>
+                  <div className="p-6 rounded-2xl border border-white/[0.08] bg-[#10151D]/80 backdrop-blur-md h-full flex flex-col justify-between">
+                    <div>
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center border mb-4"
+                        style={{
+                          backgroundColor: `${v.color}15`,
+                          borderColor: `${v.color}35`,
+                          color: v.color,
+                        }}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-base font-bold text-white mb-2">{v.title}</h4>
+                      <p className="text-xs text-text-secondary leading-relaxed">{v.desc}</p>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════════
+            ENGINEERING PHILOSOPHY: LEARN • BUILD • REPEAT
+           ════════════════════════════════════════════════════════════════════ */}
+        <section className="mb-24 lg:mb-32 p-8 sm:p-14 rounded-3xl border border-white/10 bg-gradient-to-b from-[#10151D] to-[#0A0E15]">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-14">
               <span className="text-xs font-mono uppercase tracking-widest text-[#FFBE1A] font-semibold block mb-2">
@@ -271,106 +309,41 @@ export default function AboutPage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════
-            WHAT MAKES US DIFFERENT
-           ════════════════════════════════════════════════════════════════════ */}
-        <section className="mb-24 lg:mb-32">
-          <SectionHeading
-            eyebrow="Distinct Edge"
-            title="What Makes MR.Engineers Different"
-            description="Our approach breaks away from standard agency templates to deliver real engineering integrity."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {differentiators.map((diff, idx) => {
-              const Icon = diff.icon;
-              return (
-                <AnimatedSection key={diff.title} delay={idx * 0.1}>
-                  <GlassCard className="h-full p-8 flex items-start gap-5">
-                    <div
-                      className="p-3.5 rounded-xl border shrink-0"
-                      style={{
-                        backgroundColor: `${diff.color}15`,
-                        borderColor: `${diff.color}40`,
-                        color: diff.color,
-                      }}
-                    >
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-2">{diff.title}</h4>
-                      <p className="text-text-secondary text-sm leading-relaxed">{diff.desc}</p>
-                    </div>
-                  </GlassCard>
-                </AnimatedSection>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ════════════════════════════════════════════════════════════════════
-            FOUNDER SECTION
+            OUR 4-STEP APPROACH
            ════════════════════════════════════════════════════════════════════ */}
         <section className="mb-20">
-          <AnimatedSection>
-            <div className="p-8 sm:p-12 rounded-3xl border border-white/10 bg-[#10151D] relative overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-4 flex flex-col items-center text-center">
-                  <div className="relative w-44 h-44 rounded-2xl overflow-hidden border-2 border-white/10 bg-black shadow-2xl p-2 flex items-center justify-center">
-                    <Image
-                      src="/images/logo.jpg"
-                      alt="MR.Engineers Leadership"
-                      width={160}
-                      height={160}
-                      className="rounded-xl object-contain"
-                    />
+          <SectionHeading
+            eyebrow="Methodology"
+            title="Our Engineering Approach"
+            description="A disciplined execution framework that guarantees reliable field deployment."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PROCESS_STEPS.map((step, idx) => (
+              <AnimatedSection key={step.number} delay={idx * 0.1}>
+                <div className="p-6 sm:p-8 rounded-2xl border border-white/[0.08] bg-[#10151D]/70 h-full flex flex-col justify-between">
+                  <div>
+                    <span className="text-3xl font-mono font-black text-white/10 block mb-4">
+                      {step.number}
+                    </span>
+                    <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-                  <h4 className="mt-5 text-xl font-bold text-white">The Person Behind MR.Engineers</h4>
-                  <span className="text-xs font-mono text-[#FFBE1A] tracking-wider mt-1">
-                    FOUNDER &amp; LEAD ENGINEER
-                  </span>
-                  <div className="mt-4 flex items-center gap-2">
-                    <TechBadge text="Industrial Automation" />
-                    <TechBadge text="IoT Architect" />
+                  <div className="mt-6 pt-4 border-t border-white/[0.04]">
+                    <span className="text-[10px] font-mono text-text-muted">STAGE {step.number} // EXECUTION</span>
                   </div>
                 </div>
+              </AnimatedSection>
+            ))}
+          </div>
 
-                <div className="lg:col-span-8 lg:border-l lg:border-white/[0.08] lg:pl-10 space-y-4">
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-accent uppercase tracking-wider">
-                    <Terminal className="w-3.5 h-3.5" /> Entrepreneurial Engineering
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                    Driven by Curiosity, Hands-on Prototyping, and Practical Building.
-                  </h3>
-                  <div className="space-y-3 text-text-secondary text-sm sm:text-base leading-relaxed">
-                    <p>
-                      MR.Engineers was created from a passionate commitment to hands-on engineering.
-                      Starting from curious experimentation with microcontrollers, relay boards, and
-                      control circuits, the journey grew into building production-grade industrial
-                      automation and software systems.
-                    </p>
-                    <p>
-                      The driving philosophy has always remained rooted in practical execution:
-                      diving directly into schematics, understanding edge firmware constraints, and
-                      writing clean, maintainable software that interfaces seamlessly with the physical
-                      world.
-                    </p>
-                    <p className="text-white font-medium italic pt-2">
-                      &ldquo;True engineering isn&apos;t about buzzwords. It&apos;s about building
-                      something that operates reliably day after day on the factory floor or in the
-                      field.&rdquo;
-                    </p>
-                  </div>
-
-                  <div className="pt-4 flex items-center gap-4">
-                    <GradientButton href="/contact" icon={ArrowRight}>
-                      Start a Project Together
-                    </GradientButton>
-                    <OutlineButton href="/careers">Join the Team</OutlineButton>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
+          <div className="mt-12 text-center">
+            <GradientButton href="/founders" icon={ArrowRight}>
+              Meet Our Founders
+            </GradientButton>
+          </div>
         </section>
       </div>
     </div>

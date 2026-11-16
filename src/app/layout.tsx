@@ -18,31 +18,33 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'MR.Engineers — Engineering Ideas. Building What’s Next.',
+    default: 'MR.Engineers — Engineering the Future.',
     template: '%s | MR.Engineers',
   },
   description:
-    'Engineering intelligent solutions at the intersection of industrial automation, electronics, IoT and software — transforming ideas into practical innovations based in Tamil Nadu, India.',
+    'From industrial automation to intelligent IoT solutions, MR.Engineers transforms engineering ideas into practical technology based in Erode, Tamil Nadu, India.',
   keywords: [
-    'Industrial Automation',
-    'PLC SCADA Services',
-    'ESP32 Arduino Development',
-    'IoT Solutions India',
-    'Embedded Systems',
-    'Cinema Automation Systems',
-    'Electrical Panel Fabrication',
-    'Engineering Services Tamil Nadu',
-    'Erode Technology Company',
-    'Custom Electronics Prototyping',
     'MR.Engineers',
+    'Hariprasath J',
+    'Santhosh M M',
+    'Industrial Automation Tamil Nadu',
+    'Cinema Automation Systems',
+    'Vijayan Cinemas Automation',
+    'Royal Theater Lighting Control',
+    'PLC SCADA Services India',
+    'ESP32 Arduino Prototyping',
+    'IoT Solutions Erode',
+    'MR.Engineers Academy',
+    'Engineering College Collaborations',
+    'Custom Panel Fabrication',
   ],
-  authors: [{ name: 'MR.Engineers' }],
+  authors: [{ name: 'MR.Engineers' }, { name: 'Hariprasath J' }, { name: 'Santhosh M M' }],
   creator: 'MR.Engineers',
   metadataBase: new URL('https://mrengineers.in'),
   openGraph: {
-    title: 'MR.Engineers — Engineering Ideas. Building What’s Next.',
+    title: 'MR.Engineers — Engineering the Future.',
     description:
-      'Industrial automation, IoT, embedded systems, and software engineering solutions.',
+      'From industrial automation to intelligent IoT solutions, MR.Engineers transforms engineering ideas into practical technology.',
     url: 'https://mrengineers.in',
     siteName: 'MR.Engineers',
     images: [

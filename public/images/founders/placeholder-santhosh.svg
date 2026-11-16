@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="400" y2="400">
+      <stop offset="0%" stop-color="#10151D"/>
+      <stop offset="100%" stop-color="#080B10"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFBE1A"/>
+      <stop offset="100%" stop-color="#FF9E00"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <circle cx="200" cy="150" r="60" fill="none" stroke="url(#amberGrad)" stroke-width="2" stroke-dasharray="4 4"/>
+  <circle cx="200" cy="150" r="50" fill="#161D28"/>
+  <path d="M170 145 C170 128 183 115 200 115 C217 115 230 128 230 145 C230 162 217 175 200 175 C183 175 170 162 170 145 Z" fill="#FFBE1A" opacity="0.6"/>
+  <path d="M130 270 C130 230 161 210 200 210 C239 210 270 230 270 270 Z" fill="#161D28" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <text x="200" y="320" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="18" font-weight="700">Santhosh M M</text>
+  <text x="200" y="345" text-anchor="middle" fill="#FFBE1A" font-family="monospace" font-size="12">CO-FOUNDER &amp; OPERATIONS LEAD</text>
+</svg>

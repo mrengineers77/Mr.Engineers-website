@@ -36,12 +36,12 @@ const serviceIcons: Record<string, { icon: any; color: string }> = {
   'industrial-automation': { icon: Settings, color: '#00D4FF' },
   'plc-scada': { icon: Cpu, color: '#7C5CFC' },
   'esp32-arduino': { icon: CircuitBoard, color: '#FFBE1A' },
-  'iot-development': { icon: Wifi, color: '#00D4FF' },
+  'iot-solutions': { icon: Wifi, color: '#00D4FF' },
   'embedded-systems': { icon: Layers, color: '#7C5CFC' },
   'electrical-electronics': { icon: Zap, color: '#FFBE1A' },
   'web-development': { icon: Globe, color: '#00D4FF' },
   'app-development': { icon: Smartphone, color: '#7C5CFC' },
-  'technical-projects': { icon: Wrench, color: '#FFBE1A' },
+  'custom-engineering': { icon: Wrench, color: '#FFBE1A' },
 };
 
 export default function ServicesPage() {
@@ -51,7 +51,7 @@ export default function ServicesPage() {
     { id: 'all', label: 'All Disciplines' },
     { id: 'automation', label: 'Automation & PLC' },
     { id: 'iot', label: 'IoT & Embedded' },
-    { id: 'electrical', label: 'Electrical & Hardware' },
+    { id: 'electrical', label: 'Electrical & Custom' },
     { id: 'software', label: 'Web & Applications' },
   ];
 
@@ -63,12 +63,12 @@ export default function ServicesPage() {
     if (activeFilter === 'iot') {
       return (
         service.id === 'esp32-arduino' ||
-        service.id === 'iot-development' ||
+        service.id === 'iot-solutions' ||
         service.id === 'embedded-systems'
       );
     }
     if (activeFilter === 'electrical') {
-      return service.id === 'electrical-electronics' || service.id === 'technical-projects';
+      return service.id === 'electrical-electronics' || service.id === 'custom-engineering';
     }
     if (activeFilter === 'software') {
       return service.id === 'web-development' || service.id === 'app-development';

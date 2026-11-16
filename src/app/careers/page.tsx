@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Users,
@@ -15,6 +16,8 @@ import {
   Terminal,
   Activity,
   Sparkles,
+  ArrowRight,
+  Info,
 } from 'lucide-react';
 import {
   SectionHeading,
@@ -30,31 +33,46 @@ export default function CareersPage() {
     fullName: '',
     email: '',
     phone: '',
+    roleInterest: 'General Engineering Application',
     institution: '',
     qualification: '',
-    department: '',
+    resumeLink: '',
     message: '',
   });
 
-  const [fileName, setFileName] = useState<string>('');
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const departments = [
-    'Industrial Automation (PLC & SCADA)',
-    'IoT Development (MQTT & Cloud)',
-    'ESP32 & Arduino Embedded Systems',
-    'Electrical & Panel Fabrication',
-    'Web & Full-Stack Development',
-    'Hardware Prototyping & PCB Design',
-  ];
-
-  const qualifications = [
-    'B.E. / B.Tech (ECE / EEE / Mechatronics / CSE / IT)',
-    'Diploma in Engineering',
-    'M.E. / M.Tech',
-    'B.Sc / M.Sc Electronics / CS',
-    'Other Engineering Background',
+  const roles = [
+    {
+      category: 'Engineering Roles',
+      title: 'Industrial Automation Engineer',
+      type: 'Full-Time / Project-Based',
+      status: 'No Active Openings (Accepting General Profiles)',
+      description: 'Hands-on PLC ladder programming, control cabinet wiring, and on-site cinema/factory commissioning.',
+    },
+    {
+      category: 'Engineering Roles',
+      title: 'Embedded Systems & IoT Hardware Engineer',
+      type: 'Full-Time / Project-Based',
+      status: 'No Active Openings (Accepting General Profiles)',
+      description: 'ESP32/STM32 firmware architecture, schematic capture, PCB layout, and wireless sensor integration.',
+    },
+    {
+      category: 'Software Roles',
+      title: 'Full-Stack Web & Dashboard Developer',
+      type: 'Full-Time / Project-Based',
+      status: 'No Active Openings (Accepting General Profiles)',
+      description: 'Building high-performance Next.js telemetry interfaces, WebSocket streams, and backend REST APIs.',
+    },
+    {
+      category: 'Internship Opportunities',
+      title: 'MR.Engineers Academy Technical Interns',
+      type: 'Internship (1–3 Months)',
+      status: 'Batches Enrolling via Academy',
+      description: 'Hands-on training and real project exposure in Automation, IoT, and Embedded Electronics.',
+      isInternship: true,
+    },
   ];
 
   const handleInputChange = (
@@ -64,41 +82,49 @@ export default function CareersPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
     setErrorMessage('');
 
-    // Form validation
-    if (!formData.fullName || !formData.email || !formData.phone || !formData.department) {
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.roleInterest) {
       setFormStatus('error');
-      setErrorMessage('Please complete all required fields.');
+      setErrorMessage('Please complete all mandatory fields.');
       return;
     }
 
-    // Simulate backend processing with realistic delay
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'career_application',
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          qualification: formData.qualification,
+          institution: formData.institution,
+          department: formData.roleInterest,
+          message: `${formData.message}\n\nPortfolio/Resume Link: ${formData.resumeLink}`,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
       setFormStatus('success');
       setFormData({
         fullName: '',
         email: '',
         phone: '',
+        roleInterest: 'General Engineering Application',
         institution: '',
         qualification: '',
-        department: '',
+        resumeLink: '',
         message: '',
       });
-      setFileName('');
     } catch {
       setFormStatus('error');
-      setErrorMessage('Failed to submit application. Please reach us at contact@mrengineers.in.');
+      setErrorMessage('Failed to submit application. Please email your resume to contact@mrengineers.in.');
     }
   };
 
@@ -110,7 +136,7 @@ export default function CareersPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ════════════════════════════════════════════════════════════════════
-            PAGE HERO
+            HERO SECTION
            ════════════════════════════════════════════════════════════════════ */}
         <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
           <motion.div
@@ -118,7 +144,7 @@ export default function CareersPage() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-white/10 bg-[#10151D] text-accent mb-6"
           >
-            <Users className="w-3.5 h-3.5" /> Join The Movement
+            <Briefcase className="w-3.5 h-3.5" /> Career Opportunities
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
@@ -126,8 +152,8 @@ export default function CareersPage() {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase"
           >
-            Engineer Your Future. <br />
-            <span className="gradient-text">Build Real Hardware.</span>
+            Build With <br />
+            <span className="gradient-text">MR.Engineers.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -135,71 +161,98 @@ export default function CareersPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-base sm:text-xl text-text-secondary leading-relaxed"
           >
-            We are looking for engineers and interns who are genuinely passionate about hardware,
-            automation, microcontrollers, and modern software architecture.
+            Join a technical team where hands-on engineering, physical prototyping, and real-world
+            client deployments define our everyday work.
           </motion.p>
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            WHY BUILD WITH US (3 Pillars)
+            CURRENT OPPORTUNITIES & STATUS
            ════════════════════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-24">
-          <AnimatedSection delay={0.1}>
-            <GlassCard className="h-full p-8 border-accent/20">
-              <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent mb-6">
-                <Cpu className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Hands-On Prototyping</h3>
-              <p className="text-text-secondary text-sm leading-relaxed">
-                You will not be stuck writing boilerplate reports. You will hold real microcontrollers,
-                solder circuits, program PLCs, wire industrial relays, and test live systems.
-              </p>
-            </GlassCard>
-          </AnimatedSection>
+        <section className="mb-20">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/[0.08]">
+            <div>
+              <span className="text-xs font-mono uppercase text-accent tracking-wider font-semibold block">
+                OPPORTUNITY STATUS
+              </span>
+              <h2 className="text-2xl font-bold text-white">Current Openings</h2>
+            </div>
+            <span className="text-xs font-mono px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-text-secondary">
+              Updated for 2026
+            </span>
+          </div>
 
-          <AnimatedSection delay={0.2}>
-            <GlassCard className="h-full p-8 border-[#FFBE1A]/20">
-              <div className="w-12 h-12 rounded-xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/30 flex items-center justify-center text-[#FFBE1A] mb-6">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Practical Mentorship</h3>
-              <p className="text-text-secondary text-sm leading-relaxed">
-                Work shoulder-to-shoulder with practicing engineers who understand industrial field
-                conditions, communication protocols, electrical safety, and modern software stacks.
-              </p>
-            </GlassCard>
-          </AnimatedSection>
+          <div className="space-y-4 mb-8">
+            {roles.map((r, i) => (
+              <AnimatedSection key={r.title} delay={i * 0.08}>
+                <div className="p-6 rounded-2xl border border-white/[0.08] bg-[#10151D]/70 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-white/20 transition-all">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-accent">{r.category}</span>
+                      <span className="text-xs font-mono text-text-muted">• {r.type}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{r.title}</h3>
+                    <p className="text-xs sm:text-sm text-text-secondary">{r.description}</p>
+                  </div>
 
-          <AnimatedSection delay={0.3}>
-            <GlassCard className="h-full p-8 border-accent-secondary/20">
-              <div className="w-12 h-12 rounded-xl bg-accent-secondary/10 border border-accent-secondary/30 flex items-center justify-center text-accent-secondary mb-6">
-                <Terminal className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Real-World Projects</h3>
-              <p className="text-text-secondary text-sm leading-relaxed">
-                Contribute to real automation deployments, cinema controls, and industrial monitoring
-                dashboards that operate on actual client premises in Tamil Nadu.
-              </p>
-            </GlassCard>
-          </AnimatedSection>
-        </div>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
+                    <span
+                      className={`text-xs font-mono px-3 py-1 rounded-full ${
+                        r.isInternship
+                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold'
+                          : 'bg-white/[0.04] text-text-muted border border-white/[0.08]'
+                      }`}
+                    >
+                      {r.status}
+                    </span>
+                    {r.isInternship ? (
+                      <Link href="/academy#internships" className="btn-primary text-xs py-2 px-4">
+                        View Academy Tracks
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setFormData((prev) => ({ ...prev, roleInterest: r.title }));
+                          const form = document.getElementById('career-form');
+                          form?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="btn-secondary text-xs py-2 px-4"
+                      >
+                        Submit General Profile
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {/* Transparent Notice */}
+          <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] flex items-center gap-3 text-xs text-text-secondary">
+            <Info className="w-4 h-4 text-accent shrink-0" />
+            <span>
+              <strong>Note on Hiring:</strong> While there are currently no immediate vacant full-time
+              positions, we maintain an active talent pool. High-aptitude candidates who submit their
+              profiles are prioritized as new client deployments scale.
+            </span>
+          </div>
+        </section>
 
         {/* ════════════════════════════════════════════════════════════════════
-            APPLICATION FORM SECTION
+            GENERAL APPLICATION FORM
            ════════════════════════════════════════════════════════════════════ */}
-        <div className="max-w-4xl mx-auto">
+        <div id="career-form" className="max-w-4xl mx-auto scroll-mt-28 mb-20">
           <AnimatedSection>
             <div className="p-8 sm:p-12 rounded-3xl border border-white/10 bg-[#10151D] shadow-2xl relative overflow-hidden">
               <div className="mb-8 pb-6 border-b border-white/[0.08]">
                 <span className="text-xs font-mono uppercase tracking-widest text-[#FFBE1A] font-semibold block mb-1">
-                  APPLY FOR POSITION OR INTERNSHIP
+                  CANDIDATE TALENT POOL
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                  Submit Your Candidate Profile
+                  Submit a General Application
                 </h2>
                 <p className="text-text-secondary text-sm mt-1">
-                  Complete the form below. We review every application for technical curiosity and
-                  practical problem-solving mindset.
+                  Show us what you love to build. Share your background, GitHub, or portfolio link.
                 </p>
               </div>
 
@@ -212,10 +265,10 @@ export default function CareersPage() {
                   <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Application Received!</h3>
+                  <h3 className="text-2xl font-bold text-white">Application Recorded!</h3>
                   <p className="text-text-secondary text-sm max-w-md mx-auto">
-                    Thank you for applying to MR.Engineers. Our technical team will review your
-                    background and contact you via email or phone regarding next steps.
+                    Thank you for applying. We have registered your profile in our engineering talent
+                    records and will reach out when project requirements match your skill set.
                   </p>
                   <button
                     onClick={() => setFormStatus('idle')}
@@ -234,7 +287,6 @@ export default function CareersPage() {
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Full Name */}
                     <div>
                       <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
                         Full Name <span className="text-accent">*</span>
@@ -245,12 +297,11 @@ export default function CareersPage() {
                         value={formData.fullName}
                         onChange={handleInputChange}
                         required
-                        placeholder="e.g. Karthik Raman"
+                        placeholder="e.g. Vignesh R"
                         className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                       />
                     </div>
 
-                    {/* Email */}
                     <div>
                       <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
                         Email Address <span className="text-accent">*</span>
@@ -261,14 +312,13 @@ export default function CareersPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        placeholder="you@domain.com"
+                        placeholder="vignesh@domain.com"
                         className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Phone */}
                     <div>
                       <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
                         Phone Number <span className="text-accent">*</span>
@@ -284,7 +334,23 @@ export default function CareersPage() {
                       />
                     </div>
 
-                    {/* College / Institution */}
+                    <div>
+                      <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
+                        Area of Interest <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="roleInterest"
+                        value={formData.roleInterest}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="e.g. PLC Automation / ESP32 Hardware / Full-Stack"
+                        className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
                         College / Institution
@@ -294,94 +360,36 @@ export default function CareersPage() {
                         name="institution"
                         value={formData.institution}
                         onChange={handleInputChange}
-                        placeholder="e.g. Government College of Technology"
+                        placeholder="e.g. Coimbatore Institute of Technology"
+                        className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
+                        Resume / Portfolio URL (Google Drive / GitHub)
+                      </label>
+                      <input
+                        type="url"
+                        name="resumeLink"
+                        value={formData.resumeLink}
+                        onChange={handleInputChange}
+                        placeholder="https://github.com/... or Drive link"
                         className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Qualification */}
-                    <div>
-                      <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
-                        Educational Qualification
-                      </label>
-                      <select
-                        name="qualification"
-                        value={formData.qualification}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-xl bg-[#090D14] border border-white/10 text-white text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                      >
-                        <option value="">Select Qualification</option>
-                        {qualifications.map((q) => (
-                          <option key={q} value={q}>
-                            {q}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Interested Department */}
-                    <div>
-                      <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
-                        Interested Department <span className="text-accent">*</span>
-                      </label>
-                      <select
-                        name="department"
-                        value={formData.department}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-[#090D14] border border-white/10 text-white text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                      >
-                        <option value="">Select Department</option>
-                        {departments.map((dept) => (
-                          <option key={dept} value={dept}>
-                            {dept}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Resume Upload */}
                   <div>
                     <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
-                      Resume / Portfolio Link or File
-                    </label>
-                    <div className="relative border-2 border-dashed border-white/10 hover:border-accent/40 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-black/20">
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        onChange={handleFileChange}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                      />
-                      <div className="flex flex-col items-center justify-center gap-2">
-                        <Upload className="w-6 h-6 text-text-muted" />
-                        <span className="text-sm text-text-secondary">
-                          {fileName ? (
-                            <span className="text-accent font-mono font-medium">{fileName}</span>
-                          ) : (
-                            'Click or drag your resume (.PDF, .DOC, max 10MB)'
-                          )}
-                        </span>
-                        <span className="text-[11px] text-text-muted">
-                          Alternatively, you may share a GitHub or LinkedIn link in your message.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block text-xs font-mono text-text-secondary uppercase tracking-wider mb-2">
-                      Cover Note / Technical Projects You Have Built
+                      Technical Notes / Projects Built
                     </label>
                     <textarea
                       name="message"
                       rows={4}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell us about what you have built, which tools you love, or what you want to master at MR.Engineers..."
+                      placeholder="Share details of any hardware circuits, microcontrollers, or web tools you have personally worked with..."
                       className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"
                     />
                   </div>
@@ -393,10 +401,10 @@ export default function CareersPage() {
                       className="btn-primary w-full justify-center py-4 text-base font-semibold"
                     >
                       {formStatus === 'submitting' ? (
-                        <span>Submitting Candidate Profile...</span>
+                        <span>Submitting Profile...</span>
                       ) : (
                         <>
-                          <span>Submit Application</span>
+                          <span>Submit General Application</span>
                           <Send className="w-4 h-4 ml-1" />
                         </>
                       )}
@@ -404,16 +412,6 @@ export default function CareersPage() {
                   </div>
                 </form>
               )}
-
-              {/* Transparency Notice */}
-              <div className="mt-8 pt-6 border-t border-white/[0.06] text-xs text-text-muted space-y-1">
-                <p>
-                  <strong>Notice:</strong> Internship positions are practical project-based learning
-                  opportunities with MR.Engineers. They are not accredited degree programs or
-                  guaranteed corporate placements. Selection is based purely on technical aptitude,
-                  curiosity, and mutual project alignment.
-                </p>
-              </div>
             </div>
           </AnimatedSection>
         </div>
