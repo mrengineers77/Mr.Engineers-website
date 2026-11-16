@@ -25,9 +25,9 @@ export function Footer() {
 
             <div className="hidden sm:inline text-white/20">•</div>
 
-            <div className="flex items-center gap-2 text-[#FFBE1A] font-mono">
-              <Award className="w-4 h-4 text-[#FFBE1A] shrink-0" />
-              <span>AICTE REGISTERED INTERNSHIP PROVIDER</span>
+            <div className="flex items-center gap-2 text-accent font-mono">
+              <Award className="w-4 h-4 text-accent shrink-0" />
+              <span>GOVT. REGISTERED ENTERPRISE</span>
             </div>
           </div>
 
@@ -202,7 +202,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/academy#internships" className="text-text-secondary hover:text-white transition-colors text-sm">
-                  Internship Programs (AICTE)
+                  Technical Internships
                 </Link>
               </li>
               <li>

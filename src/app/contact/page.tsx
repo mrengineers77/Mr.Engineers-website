@@ -151,7 +151,7 @@ function ContactFormInner() {
             <h3 className="text-xl font-bold text-white mb-2">Registered Corporate Office</h3>
             <p className="text-sm text-text-secondary mb-6 leading-relaxed">
               Govt. of India Registered Enterprise (MSME / UDYAM-TN-07-0161474). We welcome industrial
-              automation inquiries, custom hardware requirements, and AICTE academic internships.
+              automation inquiries, custom hardware requirements, and practical engineering internships.
             </p>
 
             <div className="space-y-4 pt-4 border-t border-white/[0.08]">

@@ -133,8 +133,8 @@ export default function CollaborationsPage() {
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-white/10 bg-[#10151D] text-accent">
               <Users className="w-3.5 h-3.5" /> Institutional &amp; Industry Partnerships
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-[#FFBE1A]/30 bg-[#FFBE1A]/10 text-[#FFBE1A]">
-              <GraduationCap className="w-3.5 h-3.5" /> AICTE Registered Partner
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-accent/30 bg-accent/10 text-accent">
+              <GraduationCap className="w-3.5 h-3.5" /> Hands-on Technical Partner
             </span>
           </motion.div>
           <motion.h1

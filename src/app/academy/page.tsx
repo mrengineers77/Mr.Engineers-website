@@ -137,24 +137,24 @@ export default function AcademyPage() {
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
-            AICTE ACCREDITATION BANNER
+            TECHNICAL INTERNSHIP BANNER
            ════════════════════════════════════════════════════════════════════ */}
         <AnimatedSection className="mb-14">
-          <div className="p-6 sm:p-8 rounded-3xl border border-[#FFBE1A]/30 bg-gradient-to-r from-[#10151D] via-[#161D28] to-[#10151D] relative overflow-hidden shadow-2xl">
+          <div className="p-6 sm:p-8 rounded-3xl border border-accent/30 bg-gradient-to-r from-[#10151D] via-[#161D28] to-[#10151D] relative overflow-hidden shadow-2xl">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/30 flex items-center justify-center text-[#FFBE1A] shrink-0 mt-1">
+                <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent shrink-0 mt-1">
                   <GraduationCap className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full text-[11px] font-mono uppercase tracking-wider bg-[#FFBE1A]/10 text-[#FFBE1A] border border-[#FFBE1A]/30 mb-2">
-                    Official Recognition // Govt. of India
+                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full text-[11px] font-mono uppercase tracking-wider bg-accent/10 text-accent border border-accent/30 mb-2">
+                    Industry Internships // Govt. MSME Registered
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold text-white">
-                    AICTE Registered Internship Provider
+                    Verified Technical Internship Provider
                   </h3>
                   <p className="mt-1.5 text-text-secondary text-sm max-w-2xl leading-relaxed">
-                    MR.Engineers is registered on the <strong>AICTE Internship Portal</strong> (All India Council for Technical Education, Ministry of Education, Govt. of India). All completed internship certificates are verified and recognized for university academic credits, curricular semester requirements, and institutional evaluations.
+                    MR.Engineers is a Govt. of India MSME Registered engineering enterprise (UDYAM-TN-07-0161474). All completed internship certifications are verified and eligible for university academic credits, curricular semester requirements, and institutional evaluations.
                   </p>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function AcademyPage() {
                   }}
                   className="btn-primary text-xs py-3 px-5 text-center font-bold"
                 >
-                  Apply for AICTE Internship
+                  Apply for Internship
                 </a>
               </div>
             </div>

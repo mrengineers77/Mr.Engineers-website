@@ -67,10 +67,10 @@ export default function CareersPage() {
     },
     {
       category: 'Internship Opportunities',
-      title: 'AICTE-Accredited Technical Internships',
+      title: 'Industry-Grade Technical Internships',
       type: 'Internship (1–3 Months)',
-      status: 'Batches Enrolling (AICTE Portal)',
-      description: 'Hands-on training and real project exposure in Automation, IoT, and Embedded Electronics registered on the official AICTE Internship Portal.',
+      status: 'Batches Enrolling (Active Batches)',
+      description: 'Hands-on training and real project exposure in Automation, IoT, and Embedded Electronics backed by MSME registration credentials.',
       isInternship: true,
     },
   ];

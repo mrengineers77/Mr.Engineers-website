@@ -87,9 +87,9 @@ export default function HomePage() {
               <span>MSME: {BRAND.registration.udyamNumber}</span>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#FFBE1A]/30 bg-[#FFBE1A]/10 backdrop-blur-md text-[#FFBE1A] text-xs font-mono">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 backdrop-blur-md text-accent text-xs font-mono">
               <Award className="w-3.5 h-3.5" />
-              <span>AICTE Registered Provider</span>
+              <span>Govt. of India Recognized</span>
             </div>
           </motion.div>
 
@@ -154,9 +154,9 @@ export default function HomePage() {
               </span>
             </div>
             <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="text-xs font-mono text-[#FFBE1A] block">ACCREDITATION</span>
+              <span className="text-xs font-mono text-[#FFBE1A] block">ENTERPRISE TYPE</span>
               <span className="text-sm font-semibold text-white mt-0.5 block truncate">
-                AICTE Internship Partner
+                Govt. MSME Enterprise
               </span>
             </div>
             <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
@@ -543,8 +543,8 @@ export default function HomePage() {
                   <span className="text-xs font-mono uppercase tracking-widest text-[#FFBE1A] font-semibold">
                     SKILL DEVELOPMENT &amp; INTERNSHIPS
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#FFBE1A]/10 border border-[#FFBE1A]/30 text-[#FFBE1A] font-bold">
-                    AICTE REGISTERED PROVIDER
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-accent/10 border border-accent/30 text-accent font-bold">
+                    PRACTICAL INDUSTRY TRAINING
                   </span>
                 </div>
                 <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
@@ -553,12 +553,11 @@ export default function HomePage() {
                 <p className="mt-4 text-text-secondary text-base max-w-2xl leading-relaxed">
                   Through the <strong>MR.Engineers Academy</strong>, we provide practical, hands-on
                   training in Industrial Automation, PLC programming, ESP32 embedded systems, and
-                  IoT development. All internship tracks are officially registered on the{' '}
-                  <strong className="text-white">AICTE Internship Portal</strong>, providing
-                  recognized academic credits for engineering students across India.
+                  IoT development. Our internship programs offer real hardware exposure, panel wiring,
+                  and industrial project mentorship for engineering students across India.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <TechBadge text="AICTE Internship Accreditation" highlight={true} />
+                  <TechBadge text="Hands-on Industry Internships" highlight={true} />
                   <TechBadge text="Practical Hardware Wiring" />
                   <TechBadge text="PLC & Ladder Logic" />
                   <TechBadge text="ESP32 IoT Prototyping" />

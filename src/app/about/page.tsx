@@ -157,8 +157,8 @@ export default function AboutPage() {
                       <span className="text-emerald-400 font-semibold">{BRAND.registration.udyamNumber}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
-                      <span className="text-text-muted">GOVT. ACCREDITATION:</span>
-                      <span className="text-[#FFBE1A] font-semibold">AICTE Registered Provider</span>
+                      <span className="text-text-muted">ENTERPRISE TYPE:</span>
+                      <span className="text-accent font-semibold">{BRAND.registration.enterpriseType}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
                       <span className="text-text-muted">LOCATION:</span>
@@ -361,32 +361,32 @@ export default function AboutPage() {
               </div>
             </AnimatedSection>
 
-            {/* AICTE Internship Partner Card */}
+            {/* Industry Training & Academy Card */}
             <AnimatedSection delay={0.2}>
-              <div className="p-8 rounded-3xl border border-[#FFBE1A]/30 bg-[#10151D]/90 h-full flex flex-col justify-between relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFBE1A]/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="p-8 rounded-3xl border border-accent/30 bg-[#10151D]/90 h-full flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl pointer-events-none" />
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/20 flex items-center justify-center text-[#FFBE1A] mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6">
                     <Award className="w-6 h-6" />
                   </div>
-                  <span className="text-xs font-mono text-[#FFBE1A] font-semibold block mb-1">
-                    MINISTRY OF EDUCATION
+                  <span className="text-xs font-mono text-accent font-semibold block mb-1">
+                    MR.ENGINEERS ACADEMY
                   </span>
                   <h3 className="text-xl font-bold text-white mb-2">
-                    AICTE Registered Internship Provider
+                    Industry-Grade Technical Internships
                   </h3>
-                  <div className="my-3 px-3 py-2 rounded-xl bg-black/60 border border-white/10 font-mono text-sm font-bold text-[#FFBE1A] inline-block">
-                    AICTE Internship Portal
+                  <div className="my-3 px-3 py-2 rounded-xl bg-black/60 border border-white/10 font-mono text-sm font-bold text-accent inline-block">
+                    Practical Hardware &amp; Automation
                   </div>
                   <p className="text-xs text-text-secondary leading-relaxed mt-2">
-                    Officially registered on the All India Council for Technical Education (AICTE)
-                    Internship Portal. All technical training certifications and student internship
-                    credits satisfy university curriculum standards.
+                    Hands-on internship tracks in PLC automation, ESP32 embedded systems, and IoT prototyping.
+                    Equipping engineering students with real shop-floor practices, panel wiring skills,
+                    and verified project experience.
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-text-muted flex justify-between">
-                  <span>ACADEMIC CREDITS: VALIDATED</span>
-                  <span className="text-[#FFBE1A]">OFFICIALLY LISTED</span>
+                  <span>PRACTICAL EXPOSURE: 100% HANDS-ON</span>
+                  <span className="text-accent">ACTIVE BATCHES</span>
                 </div>
               </div>
             </AnimatedSection>

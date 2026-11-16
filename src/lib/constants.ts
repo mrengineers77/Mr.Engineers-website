@@ -26,13 +26,6 @@ export const BRAND = {
     commencementDate: '21/06/2026',
     dic: 'District Industries Centre, Erode (Tamil Nadu)',
     msmeDfo: 'MSME-DFO, Chennai (Tamil Nadu)',
-    aicte: {
-      registered: true,
-      title: 'AICTE Registered Internship Provider',
-      portal: 'AICTE Internship Portal, Ministry of Education, Govt. of India',
-      description:
-        'Registered on the official AICTE Internship Portal. All internship programs and technical training modules are recognized for college academic credits, university curriculum requirements, and institutional assessments.',
-    },
   },
   registeredOffice: {
     doorNo: '53',
