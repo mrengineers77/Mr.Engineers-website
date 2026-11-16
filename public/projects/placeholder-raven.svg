@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="500" y2="320">
+      <stop offset="0%" stop-color="#0E121B"/>
+      <stop offset="100%" stop-color="#06080D"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#00D4FF"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(124, 92, 252, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(0, 212, 255, 0.05)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="320" rx="12" fill="url(#bg)"/>
+  <rect width="500" height="320" rx="12" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- Top Browser / UI Bar -->
+  <rect x="0" y="0" width="500" height="42" fill="#0A0D14" rx="12"/>
+  <rect x="0" y="32" width="500" height="10" fill="#0A0D14"/>
+  <circle cx="24" cy="21" r="4" fill="#FF5F56"/>
+  <circle cx="38" cy="21" r="4" fill="#FFBD2E"/>
+  <circle cx="52" cy="21" r="4" fill="#27C93F"/>
+  <rect x="140" y="12" width="220" height="18" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="250" y="24" fill="#929BA8" font-family="monospace" font-size="9" text-anchor="middle">ravenmediaworks.in</text>
+
+  <!-- Brand Header -->
+  <text x="40" y="80" fill="#FFFFFF" font-family="system-ui" font-size="20" font-weight="800" letter-spacing="-0.5">RAVEN MEDIA WORKS</text>
+  <text x="40" y="98" fill="#7C5CFC" font-family="monospace" font-size="10" font-weight="600" letter-spacing="1">CREATIVE DIGITAL ASSET MARKETPLACE</text>
+
+  <!-- 4 Asset Category Cards -->
+  <!-- Card 1: FX Templates -->
+  <rect x="40" y="120" width="95" height="110" rx="8" fill="url(#cardGrad)" stroke="rgba(124, 92, 252, 0.3)" stroke-width="1"/>
+  <rect x="52" y="132" width="30" height="30" rx="6" fill="#7C5CFC" fill-opacity="0.2"/>
+  <polygon points="62,140 74,147 62,154" fill="#00D4FF"/>
+  <text x="52" y="180" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">FX</text>
+  <text x="52" y="192" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">TEMPLATES</text>
+  <text x="52" y="212" fill="#929BA8" font-family="monospace" font-size="7">Visual Effects</text>
+
+  <!-- Card 2: Photoshop Templates -->
+  <rect x="148" y="120" width="95" height="110" rx="8" fill="url(#cardGrad)" stroke="rgba(0, 212, 255, 0.3)" stroke-width="1"/>
+  <rect x="160" y="132" width="30" height="30" rx="6" fill="#00D4FF" fill-opacity="0.2"/>
+  <text x="175" y="152" fill="#00D4FF" font-family="system-ui" font-size="13" font-weight="900" text-anchor="middle">Ps</text>
+  <text x="160" y="180" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">PHOTOSHOP</text>
+  <text x="160" y="192" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">TEMPLATES</text>
+  <text x="160" y="212" fill="#929BA8" font-family="monospace" font-size="7">Design Resources</text>
+
+  <!-- Card 3: Video Transitions -->
+  <rect x="256" y="120" width="95" height="110" rx="8" fill="url(#cardGrad)" stroke="rgba(124, 92, 252, 0.3)" stroke-width="1"/>
+  <rect x="268" y="132" width="30" height="30" rx="6" fill="#7C5CFC" fill-opacity="0.2"/>
+  <path d="M276 147 L285 138 M281 154 L290 145" stroke="#7C5CFC" stroke-width="2" stroke-linecap="round"/>
+  <text x="268" y="180" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">VIDEO</text>
+  <text x="268" y="192" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">TRANSITIONS</text>
+  <text x="268" y="212" fill="#929BA8" font-family="monospace" font-size="7">Motion Assets</text>
+
+  <!-- Card 4: Graphic Templates -->
+  <rect x="364" y="120" width="95" height="110" rx="8" fill="url(#cardGrad)" stroke="rgba(255, 190, 26, 0.3)" stroke-width="1"/>
+  <rect x="376" y="132" width="30" height="30" rx="6" fill="#FFBE1A" fill-opacity="0.2"/>
+  <circle cx="391" cy="147" r="7" stroke="#FFBE1A" stroke-width="2"/>
+  <text x="376" y="180" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">GRAPHIC</text>
+  <text x="376" y="192" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="700">TEMPLATES</text>
+  <text x="376" y="212" fill="#929BA8" font-family="monospace" font-size="7">Branding &amp; Vector</text>
+
+  <!-- Bottom Footer Line -->
+  <line x1="40" y1="260" x2="460" y2="260" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="40" y="285" fill="#929BA8" font-family="monospace" font-size="9">HOSTED ON GODADDY</text>
+  <text x="460" y="285" fill="#00D4FF" font-family="monospace" font-size="9" text-anchor="end">DESIGNED &amp; DEVELOPED BY MR.ENGINEERS</text>
+</svg>

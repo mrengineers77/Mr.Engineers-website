@@ -399,6 +399,35 @@ export const PROJECTS = [
     imageSlot: '/projects/placeholder-dashboard.svg',
     highlight: 'Proposed 4-screen multiplex architecture featuring distributed edge nodes.',
   },
+  {
+    id: 'raven-media-works',
+    title: 'Raven Media Works',
+    location: 'Digital Marketplace • India',
+    category: 'Creative Digital Asset Marketplace',
+    status: 'Successfully Completed',
+    statusType: 'completed',
+    type: 'Website Design & Development / Digital Marketplace',
+    hosting: 'GoDaddy',
+    liveUrl: 'https://www.ravenmediaworks.in/',
+    overview:
+      'An India-oriented creative digital asset marketplace developed to provide a dedicated platform for discovering and accessing creative editing resources, visual effects templates, and design assets.',
+    problem:
+      'Digital video editors, content creators, and graphic designers in India often struggle with fragmented channels to find curated visual effects, video transitions, and design templates tailored to their workflows.',
+    solution:
+      'Engineered an intuitive, high-performance creative marketplace platform with structured asset categorization (FX Templates, Photoshop Templates, Video Transitions, Graphic Templates), seamless navigation, and GoDaddy production hosting.',
+    technologies: [
+      'Digital Marketplace Architecture',
+      'UI/UX Design & Branding',
+      'FX Templates Catalog',
+      'Photoshop PSD Resources',
+      'Video Transitions Engine',
+      'Graphic Design Assets',
+      'GoDaddy Cloud Deployment',
+    ],
+    imageSlot: '/projects/placeholder-raven.svg',
+    highlight: 'Live digital asset marketplace uniting visual effects, transitions, and design templates.',
+    detailUrl: '/projects/raven-media-works',
+  },
 ] as const;
 
 // ─── Innovation & R&D Roadmap ──────────────────────────────────────────────────

@@ -84,24 +84,33 @@ export default function ProjectsPage() {
         {/* ════════════════════════════════════════════════════════════════════
             STATUS FILTER TABS
            ════════════════════════════════════════════════════════════════════ */}
-        <div className="flex items-center justify-center gap-2 mb-16">
-          {(['All', 'Completed', 'Concept'] as const).map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setSelectedFilter(filter)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
-                selectedFilter === filter
-                  ? 'bg-accent text-black shadow-[0_0_20px_rgba(0,212,255,0.3)]'
-                  : 'bg-[#10151D] text-text-secondary hover:text-white border border-white/[0.08]'
-              }`}
-            >
-              {filter === 'All'
-                ? 'All Deployments (3)'
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-16">
+          {(['All', 'Completed', 'Concept'] as const).map((filter) => {
+            const count =
+              filter === 'All'
+                ? PROJECTS.length
                 : filter === 'Completed'
-                ? 'Completed & Commissioned (2)'
-                : 'Concepts & Future R&D (1)'}
-            </button>
-          ))}
+                ? PROJECTS.filter((p) => p.statusType === 'completed').length
+                : PROJECTS.filter((p) => p.statusType === 'concept').length;
+
+            return (
+              <button
+                key={filter}
+                onClick={() => setSelectedFilter(filter)}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+                  selectedFilter === filter
+                    ? 'bg-accent text-black shadow-[0_0_20px_rgba(0,212,255,0.3)]'
+                    : 'bg-[#10151D] text-text-secondary hover:text-white border border-white/[0.08]'
+                }`}
+              >
+                {filter === 'All'
+                  ? `All Deployments (${count})`
+                  : filter === 'Completed'
+                  ? `Completed & Commissioned (${count})`
+                  : `Concepts & Future R&D (${count})`}
+              </button>
+            );
+          })}
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
@@ -206,20 +215,47 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      {/* Inquiry Action */}
-                      <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                        <span className="text-xs font-mono text-text-muted">
-                          ID: {project.id} //
-                        </span>
-                        <Link
-                          href={`/contact?service=Cinema%20Automation&project=${encodeURIComponent(
-                            project.title
-                          )}`}
-                          className="btn-primary text-xs py-2 px-4 group"
-                        >
-                          <span>Inquire Similar Solution</span>
-                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                        </Link>
+                      {/* Action Links */}
+                      <div className="pt-4 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-mono text-text-muted">
+                            ID: {project.id} //
+                          </span>
+                          {'liveUrl' in project && project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs font-mono text-accent hover:underline inline-flex items-center gap-1"
+                            >
+                              <span>Live Platform</span>
+                              <span>↗</span>
+                            </a>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          {'detailUrl' in project && project.detailUrl && (
+                            <Link
+                              href={project.detailUrl}
+                              className="btn-secondary text-xs py-2 px-4 group"
+                            >
+                              <span>Case Study</span>
+                              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 text-accent" />
+                            </Link>
+                          )}
+                          <Link
+                            href={`/contact?service=${encodeURIComponent(
+                              project.category.includes('Marketplace')
+                                ? 'Web & Application Development'
+                                : 'Cinema Automation'
+                            )}&project=${encodeURIComponent(project.title)}`}
+                            className="btn-primary text-xs py-2 px-4 group"
+                          >
+                            <span>Inquire Solution</span>
+                            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>

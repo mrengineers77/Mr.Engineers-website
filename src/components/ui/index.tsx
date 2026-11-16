@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { AnimatedSection, scaleOnHover } from '@/lib/animations';
 import { LucideIcon } from 'lucide-react';
-export { BrandLogo, MonogramSvg } from './BrandLogo';
+export { BrandLogo, MonogramSvg, FullBrandLogo } from './BrandLogo';
 export { LinkedinIcon, InstagramIcon, YoutubeIcon } from './SocialIcons';
 
 // ─── Section Heading ────────────────────────────────────────────────────────────

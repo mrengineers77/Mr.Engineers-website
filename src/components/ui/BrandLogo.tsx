@@ -8,6 +8,7 @@ interface BrandLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showTagline?: boolean;
   withImage?: boolean;
+  variant?: 'emblem' | 'full';
 }
 
 export function BrandLogo({
@@ -15,42 +16,83 @@ export function BrandLogo({
   size = 'md',
   showTagline = false,
   withImage = true,
+  variant = 'emblem',
 }: BrandLogoProps) {
   const sizeMap = {
-    sm: { img: 32, text: 'text-lg', dot: 'text-sm' },
-    md: { img: 40, text: 'text-xl lg:text-2xl', dot: 'text-base' },
-    lg: { img: 56, text: 'text-2xl lg:text-3xl', dot: 'text-lg' },
-    xl: { img: 80, text: 'text-4xl lg:text-5xl', dot: 'text-2xl' },
+    sm: { img: 34, text: 'text-lg', dot: 'text-sm' },
+    md: { img: 42, text: 'text-xl lg:text-2xl', dot: 'text-base' },
+    lg: { img: 58, text: 'text-2xl lg:text-3xl', dot: 'text-lg' },
+    xl: { img: 84, text: 'text-4xl lg:text-5xl', dot: 'text-2xl' },
   };
 
   const current = sizeMap[size];
 
+  if (variant === 'full') {
+    return (
+      <div className={`flex flex-col items-center ${className}`}>
+        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+          <Image
+            src="/images/logo.jpg"
+            alt="MR.Engineers Official Logo"
+            width={current.img * 3}
+            height={current.img * 3}
+            className="w-auto h-auto object-contain"
+            priority
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       {withImage && (
-        <div className="relative overflow-hidden rounded-lg border border-white/10 bg-black shadow-lg transition-transform duration-300 group-hover:scale-105">
+        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black shadow-lg transition-transform duration-300 group-hover:scale-105 p-0.5">
           <Image
-            src="/images/logo.jpg"
-            alt="MR.Engineers Logo"
+            src="/images/logo-monogram.png"
+            alt="MR.Engineers Monogram"
             width={current.img}
             height={current.img}
-            className="object-cover"
+            className="w-auto h-auto object-contain"
             priority
           />
         </div>
       )}
       <div className="flex flex-col">
-        <div className={`font-bold tracking-tight ${current.text} leading-none flex items-baseline`}>
+        <div className={`font-bold tracking-tight ${current.text} leading-none flex items-baseline font-sans`}>
           <span className="text-white">MR</span>
           <span className="text-[#FFBE1A] mx-0.5 font-black">.</span>
           <span className="text-white">Engineers</span>
         </div>
         {showTagline && (
-          <span className="text-xs text-[#FFBE1A] tracking-wider mt-1 font-medium italic">
+          <span className="text-[11px] text-[#FFBE1A] tracking-wider mt-1 font-medium italic font-sans">
             — Learn • Build • Repeat —
           </span>
         )}
       </div>
+    </div>
+  );
+}
+
+export function FullBrandLogo({
+  width = 160,
+  height = 160,
+  className = '',
+}: {
+  width?: number;
+  height?: number;
+  className?: string;
+}) {
+  return (
+    <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl ${className}`}>
+      <Image
+        src="/images/logo.jpg"
+        alt="MR.Engineers Official Brand Logo"
+        width={width}
+        height={height}
+        className="w-full h-auto object-contain"
+        priority
+      />
     </div>
   );
 }

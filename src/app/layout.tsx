@@ -66,9 +66,9 @@ export const metadata: Metadata = {
     images: ['/images/logo.jpg'],
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/images/logo.jpg',
+    icon: '/images/logo-monogram.png',
+    shortcut: '/images/logo-monogram.png',
+    apple: '/images/logo-monogram.png',
   },
   robots: {
     index: true,

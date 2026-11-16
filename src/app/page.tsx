@@ -358,25 +358,25 @@ export default function HomePage() {
                 Featured Projects
               </h2>
               <p className="mt-3 text-text-secondary text-base max-w-xl">
-                Real cinema automation deployments and scalable architectural concepts engineered by
-                MR.Engineers in Tamil Nadu.
+                Real cinema automation deployments, creative digital platforms, and scalable
+                engineering architectures delivered by MR.Engineers.
               </p>
             </div>
             <Link
               href="/projects"
               className="btn-secondary text-sm self-start md:self-end shrink-0"
             >
-              Browse Complete Portfolio
+              Browse Complete Portfolio (4)
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
             {PROJECTS.map((project, idx) => (
               <AnimatedSection key={project.id} delay={idx * 0.1}>
                 <div className="rounded-2xl border border-white/[0.08] bg-[#10151D]/75 overflow-hidden hover:border-white/20 transition-all duration-300 group flex flex-col h-full">
                   {/* Schematic / Project Image Slot */}
-                  <div className="relative h-52 bg-[#090D14] flex items-center justify-center border-b border-white/[0.06] overflow-hidden p-6">
+                  <div className="relative h-48 bg-[#090D14] flex items-center justify-center border-b border-white/[0.06] overflow-hidden p-5">
                     <Image
                       src={project.imageSlot}
                       alt={project.title}
@@ -403,37 +403,37 @@ export default function HomePage() {
                   </div>
 
                   {/* Project Details */}
-                  <div className="p-6 flex flex-col justify-between flex-grow">
+                  <div className="p-5 flex flex-col justify-between flex-grow">
                     <div>
                       <span className="text-xs font-mono text-text-muted block mb-1">
                         {project.location}
                       </span>
-                      <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
+                      <h3 className="text-lg font-bold text-white group-hover:text-accent transition-colors line-clamp-1">
                         {project.title}
                       </h3>
-                      <p className="mt-2 text-text-secondary text-xs sm:text-sm leading-relaxed">
+                      <p className="mt-2 text-text-secondary text-xs sm:text-sm leading-relaxed line-clamp-3">
                         {project.overview}
                       </p>
 
-                      <div className="mt-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
-                        <span className="text-[#FFBE1A] font-semibold block mb-1">HIGHLIGHT:</span>
-                        <span className="text-text-secondary font-sans leading-normal">
+                      <div className="mt-4 pt-3 border-t border-white/[0.06] text-xs font-mono">
+                        <span className="text-[#FFBE1A] font-semibold block mb-0.5">HIGHLIGHT:</span>
+                        <span className="text-text-secondary font-sans text-xs leading-normal line-clamp-2">
                           {project.highlight}
                         </span>
                       </div>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                    <div className="mt-5 pt-3 border-t border-white/[0.06] flex items-center justify-between">
                       <div className="flex flex-wrap gap-1">
                         {project.technologies.slice(0, 2).map((t) => (
                           <TechBadge key={t} text={t} />
                         ))}
                       </div>
                       <Link
-                        href={`/projects#${project.id}`}
-                        className="text-xs text-white hover:text-accent flex items-center gap-1 font-mono shrink-0 pl-2"
+                        href={'detailUrl' in project && project.detailUrl ? project.detailUrl : `/projects#${project.id}`}
+                        className="text-xs text-white hover:text-accent flex items-center gap-1 font-mono shrink-0 pl-2 font-semibold"
                       >
-                        Details <ArrowRight className="w-3.5 h-3.5" />
+                        {'detailUrl' in project && project.detailUrl ? 'Case Study' : 'Details'} <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
                   </div>
