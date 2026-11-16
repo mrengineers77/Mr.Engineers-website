@@ -67,10 +67,10 @@ export default function CareersPage() {
     },
     {
       category: 'Internship Opportunities',
-      title: 'MR.Engineers Academy Technical Interns',
+      title: 'AICTE-Accredited Technical Internships',
       type: 'Internship (1–3 Months)',
-      status: 'Batches Enrolling via Academy',
-      description: 'Hands-on training and real project exposure in Automation, IoT, and Embedded Electronics.',
+      status: 'Batches Enrolling (AICTE Portal)',
+      description: 'Hands-on training and real project exposure in Automation, IoT, and Embedded Electronics registered on the official AICTE Internship Portal.',
       isInternship: true,
     },
   ];

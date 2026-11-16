@@ -2,6 +2,7 @@
 
 export const BRAND = {
   name: 'MR.Engineers',
+  legalName: 'MR.ENGINEERS',
   tagline: 'Learn • Build • Repeat.',
   taglineFormatted: '— Learn • Build • Repeat —',
   statement: 'Engineering the Future.',
@@ -9,9 +10,43 @@ export const BRAND = {
     'From industrial automation to intelligent IoT solutions, MR.Engineers transforms engineering ideas into practical technology.',
   url: 'https://mrengineers.in',
   email: 'mrengineers.contact@gmail.com',
-  phone: '+91 XXXXX XXXXX', // Configurable placeholder
+  phone: '+91 6369797720',
+  phoneFormatted: '+91 63697 97720',
   location: 'Erode, Tamil Nadu, India',
   logo: '/images/logo.jpg',
+  monogram: '/images/logo-monogram.png',
+  registration: {
+    status: 'Govt. of India Registered Enterprise',
+    body: 'Ministry of Micro, Small and Medium Enterprises (MSME)',
+    scheme: 'UDYAM REGISTRATION',
+    udyamNumber: 'UDYAM-TN-07-0161474',
+    enterpriseType: 'Micro Enterprise (Services)',
+    classificationDate: '12/11/2026',
+    incorporationDate: '02/05/2026',
+    commencementDate: '21/06/2026',
+    dic: 'District Industries Centre, Erode (Tamil Nadu)',
+    msmeDfo: 'MSME-DFO, Chennai (Tamil Nadu)',
+    aicte: {
+      registered: true,
+      title: 'AICTE Registered Internship Provider',
+      portal: 'AICTE Internship Portal, Ministry of Education, Govt. of India',
+      description:
+        'Registered on the official AICTE Internship Portal. All internship programs and technical training modules are recognized for college academic credits, university curriculum requirements, and institutional assessments.',
+    },
+  },
+  registeredOffice: {
+    doorNo: '53',
+    premise: 'Opposite Saravana Hospital',
+    street: 'Anthiyur Main Road',
+    town: 'Bhavani',
+    city: 'Appakudal',
+    district: 'Erode',
+    state: 'Tamil Nadu',
+    pincode: '638315',
+    country: 'India',
+    fullAddress:
+      'Door No. 53, Opposite Saravana Hospital, Anthiyur Main Road, Bhavani, Appakudal, Erode, Tamil Nadu – 638315',
+  },
 } as const;
 
 // ─── Founders ──────────────────────────────────────────────────────────────────

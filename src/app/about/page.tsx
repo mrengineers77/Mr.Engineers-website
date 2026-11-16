@@ -153,8 +153,20 @@ export default function AboutPage() {
 
                   <div className="space-y-3 font-mono text-xs">
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
+                      <span className="text-text-muted">REGISTRATION:</span>
+                      <span className="text-emerald-400 font-semibold">{BRAND.registration.udyamNumber}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-white/[0.04]">
+                      <span className="text-text-muted">GOVT. ACCREDITATION:</span>
+                      <span className="text-[#FFBE1A] font-semibold">AICTE Registered Provider</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-white/[0.04]">
                       <span className="text-text-muted">LOCATION:</span>
                       <span className="text-white font-medium">{BRAND.location}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-white/[0.04]">
+                      <span className="text-text-muted">REGISTERED OFFICE:</span>
+                      <span className="text-white text-right max-w-[200px] truncate">{BRAND.registeredOffice.fullAddress}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
                       <span className="text-text-muted">CO-FOUNDERS:</span>
@@ -306,6 +318,114 @@ export default function AboutPage() {
               </div>
             </div>
           </AnimatedSection>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════════
+            GOVERNMENT ACCREDITATIONS & CORPORATE REGISTRATION
+           ════════════════════════════════════════════════════════════════════ */}
+        <section className="mb-24 lg:mb-32">
+          <SectionHeading
+            eyebrow="Official Credentials"
+            title="Registered Enterprise & National Accreditations"
+            description="MR.Engineers operates as a legally incorporated, government-recognized technology enterprise and certified academic internship partner."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Udyam MSME Certificate Card */}
+            <AnimatedSection delay={0.1}>
+              <div className="p-8 rounded-3xl border border-emerald-500/30 bg-[#10151D]/90 h-full flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none" />
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-mono text-emerald-400 font-semibold block mb-1">
+                    GOVT. OF INDIA MSME
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Udyam Registration Certificate
+                  </h3>
+                  <div className="my-3 px-3 py-2 rounded-xl bg-black/60 border border-white/10 font-mono text-sm font-bold text-white inline-block">
+                    {BRAND.registration.udyamNumber}
+                  </div>
+                  <p className="text-xs text-text-secondary leading-relaxed mt-2">
+                    Certified Micro Enterprise (Services) under the Ministry of Micro, Small and
+                    Medium Enterprises, Government of India. Operating through District Industries
+                    Centre, Erode and MSME-DFO, Chennai.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-text-muted flex justify-between">
+                  <span>INCORPORATION: 02/05/2026</span>
+                  <span className="text-emerald-400">ACTIVE &amp; VERIFIED</span>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* AICTE Internship Partner Card */}
+            <AnimatedSection delay={0.2}>
+              <div className="p-8 rounded-3xl border border-[#FFBE1A]/30 bg-[#10151D]/90 h-full flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFBE1A]/5 rounded-full blur-2xl pointer-events-none" />
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/20 flex items-center justify-center text-[#FFBE1A] mb-6">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-mono text-[#FFBE1A] font-semibold block mb-1">
+                    MINISTRY OF EDUCATION
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    AICTE Registered Internship Provider
+                  </h3>
+                  <div className="my-3 px-3 py-2 rounded-xl bg-black/60 border border-white/10 font-mono text-sm font-bold text-[#FFBE1A] inline-block">
+                    AICTE Internship Portal
+                  </div>
+                  <p className="text-xs text-text-secondary leading-relaxed mt-2">
+                    Officially registered on the All India Council for Technical Education (AICTE)
+                    Internship Portal. All technical training certifications and student internship
+                    credits satisfy university curriculum standards.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-text-muted flex justify-between">
+                  <span>ACADEMIC CREDITS: VALIDATED</span>
+                  <span className="text-[#FFBE1A]">OFFICIALLY LISTED</span>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* National Industry Classification Scope */}
+            <AnimatedSection delay={0.3}>
+              <div className="p-8 rounded-3xl border border-accent/20 bg-[#10151D]/90 h-full flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl pointer-events-none" />
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6">
+                    <Activity className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-mono text-accent font-semibold block mb-1">
+                    OFFICIAL OPERATIONAL SCOPE
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    National Industry Codes (NIC)
+                  </h3>
+                  <div className="mt-3 space-y-1.5 font-mono text-[11px] text-text-secondary">
+                    <div className="p-1.5 rounded bg-black/40 border border-white/[0.04]">
+                      <strong className="text-white">NIC 71100:</strong> Engineering &amp; Technical Consultancy
+                    </div>
+                    <div className="p-1.5 rounded bg-black/40 border border-white/[0.04]">
+                      <strong className="text-white">NIC 62011-13:</strong> Software &amp; Web Development
+                    </div>
+                    <div className="p-1.5 rounded bg-black/40 border border-white/[0.04]">
+                      <strong className="text-white">NIC 85499:</strong> Technical Training &amp; Education
+                    </div>
+                    <div className="p-1.5 rounded bg-black/40 border border-white/[0.04]">
+                      <strong className="text-white">NIC 72100:</strong> R&amp;D on Engineering Sciences
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] text-[11px] font-mono text-text-muted">
+                  <span>REGISTERED OFFICE: BHAVANI, ERODE</span>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════

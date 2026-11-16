@@ -128,9 +128,14 @@ export default function CollaborationsPage() {
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-white/10 bg-[#10151D] text-accent mb-6"
+            className="flex flex-wrap items-center justify-center gap-2 mb-6"
           >
-            <Users className="w-3.5 h-3.5" /> Institutional &amp; Industry Partnerships
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-white/10 bg-[#10151D] text-accent">
+              <Users className="w-3.5 h-3.5" /> Institutional &amp; Industry Partnerships
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border border-[#FFBE1A]/30 bg-[#FFBE1A]/10 text-[#FFBE1A]">
+              <GraduationCap className="w-3.5 h-3.5" /> AICTE Registered Partner
+            </span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 15 }}

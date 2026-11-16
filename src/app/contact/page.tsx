@@ -58,6 +58,7 @@ function ContactFormInner() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [referenceId, setReferenceId] = useState<string>('');
+  const [directMailto, setDirectMailto] = useState<string>('');
 
   useEffect(() => {
     if (initialService) {
@@ -120,6 +121,9 @@ function ContactFormInner() {
       if (!res.ok) throw new Error(data.error || 'Failed to submit inquiry');
 
       setReferenceId(data.referenceId || `MR-${Date.now().toString().slice(-6)}`);
+      if (data.directMailtoUrl) {
+        setDirectMailto(data.directMailtoUrl);
+      }
       setFormStatus('success');
       setFormData({
         name: '',
@@ -144,46 +148,74 @@ function ContactFormInner() {
       <div className="lg:col-span-5 space-y-6">
         <AnimatedSection>
           <div className="p-8 rounded-3xl border border-white/10 bg-[#10151D] shadow-xl relative overflow-hidden">
-            <h3 className="text-xl font-bold text-white mb-2">Corporate Headquarters</h3>
+            <h3 className="text-xl font-bold text-white mb-2">Registered Corporate Office</h3>
             <p className="text-sm text-text-secondary mb-6 leading-relaxed">
-              Based in Erode, Tamil Nadu. We welcome industrial automation inquiries, prototype
-              feasibility discussions, and academic collaborations across India.
+              Govt. of India Registered Enterprise (MSME / UDYAM-TN-07-0161474). We welcome industrial
+              automation inquiries, custom hardware requirements, and AICTE academic internships.
             </p>
 
             <div className="space-y-4 pt-4 border-t border-white/[0.08]">
+              {/* Registered Address */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-text-muted block">LOCATION</span>
-                  <span className="text-sm text-white font-medium">{BRAND.location}</span>
+                  <span className="text-xs font-mono text-text-muted block font-semibold uppercase">REGISTERED OFFICE</span>
+                  <span className="text-sm text-white font-medium block leading-relaxed">
+                    {BRAND.registeredOffice.fullAddress}
+                  </span>
+                  <span className="text-[11px] font-mono text-text-muted block mt-0.5">
+                    Landmark: {BRAND.registeredOffice.premise}
+                  </span>
                 </div>
               </div>
 
+              {/* Email */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/20 flex items-center justify-center text-[#FFBE1A] shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/20 flex items-center justify-center text-[#FFBE1A] shrink-0 mt-0.5">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-text-muted block">EMAIL INQUIRIES</span>
+                  <span className="text-xs font-mono text-text-muted block font-semibold uppercase">OFFICIAL EMAIL</span>
                   <a
                     href={`mailto:${BRAND.email}`}
-                    className="text-sm text-white hover:text-accent font-medium transition-colors"
+                    className="text-sm text-white hover:text-accent font-medium transition-colors font-mono"
                   >
                     {BRAND.email}
                   </a>
+                  <span className="text-[11px] text-text-muted block">Direct founder notification</span>
                 </div>
               </div>
 
+              {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-accent-secondary/10 border border-accent-secondary/20 flex items-center justify-center text-accent-secondary shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-mono text-text-muted block">TELEPHONE</span>
-                  <span className="text-sm text-white font-medium">{BRAND.phone}</span>
-                  <span className="text-[11px] text-text-muted block">(Configurable Placeholder)</span>
+                  <span className="text-xs font-mono text-text-muted block font-semibold uppercase">PRIMARY TELEPHONE</span>
+                  <a
+                    href={`tel:${BRAND.phone}`}
+                    className="text-sm text-white hover:text-accent font-medium font-mono"
+                  >
+                    {BRAND.phoneFormatted}
+                  </a>
+                  <span className="text-[11px] text-emerald-400 font-mono block">Direct line // Mon–Sat</span>
+                </div>
+              </div>
+
+              {/* Government Registration Badge */}
+              <div className="p-4 rounded-2xl bg-black/50 border border-emerald-500/20 mt-4 space-y-1.5">
+                <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold">
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>GOVT. MSME REGISTRATION</span>
+                </div>
+                <div className="font-mono text-sm font-bold text-white tracking-wider">
+                  {BRAND.registration.udyamNumber}
+                </div>
+                <div className="text-[11px] text-text-muted">
+                  Ministry of Micro, Small &amp; Medium Enterprises, Govt. of India
                 </div>
               </div>
             </div>
@@ -282,18 +314,30 @@ function ContactFormInner() {
                 <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Transmission Recorded!</h3>
+                <h3 className="text-2xl font-bold text-white">Inquiry Transmitted Successfully!</h3>
                 <p className="text-text-secondary text-sm max-w-md mx-auto">
-                  Thank you for reaching out to MR.Engineers. Your inquiry reference ID is{' '}
-                  <strong className="text-accent font-mono">{referenceId}</strong>. Our engineering
-                  team will respond with technical scoping shortly.
+                  Thank you for reaching out to MR.Engineers. Your transmission reference ID is{' '}
+                  <strong className="text-accent font-mono">{referenceId}</strong>. A copy has been
+                  routed directly to <span className="text-white font-mono">mrengineers.contact@gmail.com</span>.
                 </p>
-                <button
-                  onClick={() => setFormStatus('idle')}
-                  className="btn-secondary text-xs mt-4"
-                >
-                  Send Another Inquiry
-                </button>
+
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+                  {directMailto && (
+                    <a
+                      href={directMailto}
+                      className="btn-primary text-xs py-2.5 px-4"
+                    >
+                      <Mail className="w-3.5 h-3.5 mr-1" />
+                      <span>Send Direct via Gmail</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setFormStatus('idle')}
+                    className="btn-secondary text-xs py-2.5 px-4"
+                  >
+                    Send Another Inquiry
+                  </button>
+                </div>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -446,6 +490,15 @@ function ContactFormInner() {
                       </>
                     )}
                   </button>
+                  <p className="text-center text-xs text-text-muted mt-3">
+                    Prefer direct email? Send directly to{' '}
+                    <a
+                      href="mailto:mrengineers.contact@gmail.com?subject=Engineering%20Inquiry%20to%20MR.Engineers"
+                      className="text-accent hover:underline font-mono"
+                    >
+                      mrengineers.contact@gmail.com
+                    </a>
+                  </p>
                 </div>
               </form>
             )}

@@ -22,6 +22,8 @@ import {
   Users,
   Compass,
   Lightbulb,
+  ShieldCheck,
+  Award,
 } from 'lucide-react';
 import {
   SectionHeading,
@@ -66,17 +68,29 @@ export default function HomePage() {
          ════════════════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-[92vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="max-w-6xl mx-auto w-full text-center relative z-10">
-          {/* Top Tagline Badge */}
+          {/* Top Tagline & Accreditations Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-[#10151D]/80 backdrop-blur-md mb-8 shadow-lg"
+            className="flex flex-wrap items-center justify-center gap-2.5 mb-8"
           >
-            <div className="w-2 h-2 rounded-full bg-[#FFBE1A] animate-ping" />
-            <span className="text-xs sm:text-sm font-mono tracking-wider text-text-secondary uppercase">
-              {BRAND.taglineFormatted}
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-[#10151D]/80 backdrop-blur-md shadow-lg">
+              <div className="w-2 h-2 rounded-full bg-[#FFBE1A] animate-ping" />
+              <span className="text-xs sm:text-sm font-mono tracking-wider text-text-secondary uppercase">
+                {BRAND.taglineFormatted}
+              </span>
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md text-emerald-400 text-xs font-mono">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>MSME: {BRAND.registration.udyamNumber}</span>
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#FFBE1A]/30 bg-[#FFBE1A]/10 backdrop-blur-md text-[#FFBE1A] text-xs font-mono">
+              <Award className="w-3.5 h-3.5" />
+              <span>AICTE Registered Provider</span>
+            </div>
           </motion.div>
 
           {/* Large Headline */}
@@ -134,15 +148,15 @@ export default function HomePage() {
             className="mt-16 pt-8 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-6 text-left max-w-4xl mx-auto"
           >
             <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="text-xs font-mono text-accent block">DISCIPLINES</span>
-              <span className="text-sm font-semibold text-white mt-0.5 block">
-                Automation &amp; Embedded
+              <span className="text-xs font-mono text-emerald-400 block">GOVT. REGISTRATION</span>
+              <span className="text-sm font-semibold text-white mt-0.5 block truncate">
+                MSME Registered
               </span>
             </div>
             <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="text-xs font-mono text-[#FFBE1A] block">CONNECTIVITY</span>
-              <span className="text-sm font-semibold text-white mt-0.5 block">
-                IoT, MQTT &amp; Cloud
+              <span className="text-xs font-mono text-[#FFBE1A] block">ACCREDITATION</span>
+              <span className="text-sm font-semibold text-white mt-0.5 block truncate">
+                AICTE Internship Partner
               </span>
             </div>
             <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
@@ -152,9 +166,9 @@ export default function HomePage() {
               </span>
             </div>
             <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04]">
-              <span className="text-xs font-mono text-white block">LOCATION</span>
+              <span className="text-xs font-mono text-white block">REGISTERED OFFICE</span>
               <span className="text-sm font-semibold text-white mt-0.5 block">
-                Erode, Tamil Nadu
+                Bhavani, Erode, TN
               </span>
             </div>
           </motion.div>
@@ -509,19 +523,27 @@ export default function HomePage() {
           <div className="p-8 sm:p-14 rounded-3xl border border-white/10 bg-gradient-to-br from-[#10151D] via-[#0E131C] to-[#10151D] relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#FFBE1A] font-semibold block mb-2">
-                  SKILL DEVELOPMENT &amp; INTERNSHIPS
-                </span>
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#FFBE1A] font-semibold">
+                    SKILL DEVELOPMENT &amp; INTERNSHIPS
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#FFBE1A]/10 border border-[#FFBE1A]/30 text-[#FFBE1A] font-bold">
+                    AICTE REGISTERED PROVIDER
+                  </span>
+                </div>
                 <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
                   Learn. Build. Engineer.
                 </h2>
                 <p className="mt-4 text-text-secondary text-base max-w-2xl leading-relaxed">
                   Through the <strong>MR.Engineers Academy</strong>, we provide practical, hands-on
                   training in Industrial Automation, PLC programming, ESP32 embedded systems, and
-                  IoT development for aspiring engineers and college students.
+                  IoT development. All internship tracks are officially registered on the{' '}
+                  <strong className="text-white">AICTE Internship Portal</strong>, providing
+                  recognized academic credits for engineering students across India.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <TechBadge text="Practical Hardware Wiring" highlight={true} />
+                  <TechBadge text="AICTE Internship Accreditation" highlight={true} />
+                  <TechBadge text="Practical Hardware Wiring" />
                   <TechBadge text="PLC & Ladder Logic" />
                   <TechBadge text="ESP32 IoT Prototyping" />
                   <TechBadge text="Final Year Project Mentorship" />

@@ -137,6 +137,45 @@ export default function AcademyPage() {
         </div>
 
         {/* ════════════════════════════════════════════════════════════════════
+            AICTE ACCREDITATION BANNER
+           ════════════════════════════════════════════════════════════════════ */}
+        <AnimatedSection className="mb-14">
+          <div className="p-6 sm:p-8 rounded-3xl border border-[#FFBE1A]/30 bg-gradient-to-r from-[#10151D] via-[#161D28] to-[#10151D] relative overflow-hidden shadow-2xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#FFBE1A]/10 border border-[#FFBE1A]/30 flex items-center justify-center text-[#FFBE1A] shrink-0 mt-1">
+                  <GraduationCap className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full text-[11px] font-mono uppercase tracking-wider bg-[#FFBE1A]/10 text-[#FFBE1A] border border-[#FFBE1A]/30 mb-2">
+                    Official Recognition // Govt. of India
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    AICTE Registered Internship Provider
+                  </h3>
+                  <p className="mt-1.5 text-text-secondary text-sm max-w-2xl leading-relaxed">
+                    MR.Engineers is registered on the <strong>AICTE Internship Portal</strong> (All India Council for Technical Education, Ministry of Education, Govt. of India). All completed internship certificates are verified and recognized for university academic credits, curricular semester requirements, and institutional evaluations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="shrink-0 flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <a
+                  href="#register"
+                  onClick={() => {
+                    setActiveTab('internships');
+                    setFormType('internship');
+                  }}
+                  className="btn-primary text-xs py-3 px-5 text-center font-bold"
+                >
+                  Apply for AICTE Internship
+                </a>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* ════════════════════════════════════════════════════════════════════
             TAB SELECTOR: Training Domains vs. Internship Programs
            ════════════════════════════════════════════════════════════════════ */}
         <div className="flex justify-center mb-16">
