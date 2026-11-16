@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" stop-color="#080B10"/>
+      <stop offset="100%" stop-color="#10151D"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#7C5CFC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid pattern -->
+  <line x1="0" y1="0" x2="0" y2="630" stroke="rgba(255,255,255,0.02)" stroke-width="1" transform="translate(60)"/>
+  <line x1="0" y1="0" x2="0" y2="630" stroke="rgba(255,255,255,0.02)" stroke-width="1" transform="translate(120)"/>
+  <line x1="0" y1="0" x2="0" y2="630" stroke="rgba(255,255,255,0.02)" stroke-width="1" transform="translate(180)"/>
+  <!-- Brand -->
+  <text x="100" y="260" font-family="system-ui" font-weight="800" font-size="72" fill="url(#accent)">MR.</text>
+  <text x="100" y="340" font-family="system-ui" font-weight="700" font-size="72" fill="#F5F7FA">Engineers</text>
+  <text x="100" y="400" font-family="system-ui" font-weight="400" font-size="24" fill="#929BA8">Learn • Build • Repeat.</text>
+  <!-- Accent line -->
+  <rect x="100" y="430" width="200" height="2" rx="1" fill="url(#accent)" opacity="0.6"/>
+  <text x="100" y="470" font-family="system-ui" font-weight="400" font-size="18" fill="#5A6270">Engineering &amp; Technology Solutions</text>
+</svg>

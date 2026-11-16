@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #080B10;
+  --color-background-secondary: #10151D;
+  --color-background-tertiary: #161D28;
+  --color-text-primary: #F5F7FA;
+  --color-text-secondary: #929BA8;
+  --color-text-muted: #5A6270;
+  --color-accent: #00D4FF;
+  --color-accent-secondary: #7C5CFC;
+  --color-brand-yellow: #FFBE1A;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-glass: rgba(16, 21, 29, 0.6);
+  --color-glass-strong: rgba(16, 21, 29, 0.85);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(0, 212, 255, 0.2);
+  color: var(--color-text-primary);
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Grid Background ─────────────────────────────────────────────────────── */
+
+.grid-background {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Gradient Text ────────────────────────────────────────────────────────── */
+
+.gradient-text {
+  background: linear-gradient(135deg, #00D4FF, #7C5CFC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-white {
+  background: linear-gradient(180deg, #F5F7FA 0%, #929BA8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass Card ───────────────────────────────────────────────────────────── */
+
+.glass-card {
+  background: rgba(16, 21, 29, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(16, 21, 29, 0.75);
+}
+
+/* ─── Glow Effects ─────────────────────────────────────────────────────────── */
+
+.glow-accent {
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.08);
+}
+
+.glow-line {
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  height: 1px;
+}
+
+/* ─── Button Styles ────────────────────────────────────────────────────────── */
+
+.btn-primary {
+  background: linear-gradient(135deg, #00D4FF, #0099CC);
+  color: #080B10;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+/* ─── Section Divider ──────────────────────────────────────────────────────── */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+}
+
+/* ─── Reduced Motion ───────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

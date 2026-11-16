@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="400" y2="300">
+      <stop offset="0%" stop-color="#10151D"/>
+      <stop offset="100%" stop-color="#080B10"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#g1)"/>
+  <rect x="100" y="70" width="200" height="130" rx="6" fill="none" stroke="#00D4FF" stroke-width="1.5" opacity="0.4"/>
+  <rect x="115" y="85" width="80" height="50" rx="3" fill="#00D4FF" opacity="0.08" stroke="#00D4FF" stroke-width="0.5" stroke-opacity="0.2"/>
+  <rect x="205" y="85" width="80" height="24" rx="3" fill="#7C5CFC" opacity="0.08" stroke="#7C5CFC" stroke-width="0.5" stroke-opacity="0.2"/>
+  <rect x="205" y="115" width="80" height="24" rx="3" fill="#00D4FF" opacity="0.08" stroke="#00D4FF" stroke-width="0.5" stroke-opacity="0.2"/>
+  <rect x="115" y="145" width="170" height="40" rx="3" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+  <text x="200" y="240" text-anchor="middle" fill="#929BA8" font-family="system-ui" font-size="14">Web Dashboard</text>
+</svg>

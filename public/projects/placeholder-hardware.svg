@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="400" y2="300">
+      <stop offset="0%" stop-color="#10151D"/>
+      <stop offset="100%" stop-color="#080B10"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#g1)"/>
+  <rect x="150" y="90" width="100" height="70" rx="4" fill="none" stroke="#7C5CFC" stroke-width="1.5" opacity="0.4"/>
+  <rect x="165" y="105" width="12" height="12" rx="1" fill="#00D4FF" opacity="0.2"/>
+  <rect x="185" y="105" width="12" height="12" rx="1" fill="#00D4FF" opacity="0.2"/>
+  <rect x="205" y="105" width="12" height="12" rx="1" fill="#00D4FF" opacity="0.2"/>
+  <rect x="225" y="105" width="12" height="12" rx="1" fill="#00D4FF" opacity="0.2"/>
+  <line x1="160" y1="130" x2="240" y2="130" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+  <rect x="165" y="135" width="12" height="12" rx="1" fill="#7C5CFC" opacity="0.2"/>
+  <rect x="185" y="135" width="12" height="12" rx="1" fill="#7C5CFC" opacity="0.2"/>
+  <path d="M170 170 L170 200 M200 170 L200 200 M230 170 L230 200" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="200" y="240" text-anchor="middle" fill="#929BA8" font-family="system-ui" font-size="14">Custom Hardware</text>
+</svg>
