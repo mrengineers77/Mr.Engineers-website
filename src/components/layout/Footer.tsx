@@ -82,7 +82,7 @@ export function Footer() {
 
               {/* Founders Tag */}
               <div className="mt-4 pt-4 border-t border-white/[0.06] text-xs text-text-muted">
-                <span>Co-Founders: </span>
+                <span>Founders: </span>
                 <Link href="/founders" className="text-white hover:text-accent font-medium">
                   {FOUNDERS[0].name}
                 </Link>

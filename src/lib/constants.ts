@@ -55,10 +55,10 @@ export const FOUNDERS = [
   {
     id: 'hariprasath-j',
     name: 'Hariprasath J',
-    role: 'Co-Founder',
-    title: 'Co-Founder & Technology Lead',
+    role: 'Founder',
+    title: 'Founder, Chief Engineer & Manager',
     instagram: 'https://www.instagram.com/_hari__prasath__j?cplk=MTR1amlpbmZjdHo5YQ==',
-    bio: 'Passionate about hands-on industrial automation, embedded architectures, and IoT hardware. Focused on designing deterministic control systems, hardware-software co-design, and driving technical execution across industrial client deployments.',
+    bio: 'Passionate about hands-on industrial automation, embedded architectures, and IoT hardware. Serves as Founder, Chief Engineer & Manager driving technical direction, hardware-software co-design, and execution across client deployments.',
     focusAreas: [
       'Industrial Automation & PLC',
       'Embedded Systems & ESP32',
@@ -70,10 +70,10 @@ export const FOUNDERS = [
   {
     id: 'santhosh-m-m',
     name: 'Santhosh M M',
-    role: 'Co-Founder',
-    title: 'Co-Founder & Engineering Operations Lead',
+    role: 'Founder',
+    title: 'Founder & Chief Electrical Engineer',
     instagram: 'https://www.instagram.com/santhoshsanthosh7985?xtok=MWJqdm1ia2ozZTdhcA==',
-    bio: 'Dedicated to electrical engineering design, control panel engineering, and technical education. Drives project development, field installation standards, student technical mentorship, and institutional engineering collaborations.',
+    bio: 'Dedicated to electrical engineering design, control panel engineering, and technical education. Serves as Founder & Chief Electrical Engineer directing electrical systems, control panel fabrication, field installation standards, and technical training.',
     focusAreas: [
       'Electrical & Electronics Design',
       'Control Panel Fabrication',

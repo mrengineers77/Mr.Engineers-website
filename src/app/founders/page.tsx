@@ -90,7 +90,7 @@ export default function FoundersPage() {
                         />
                         <div className="absolute top-4 right-4">
                           <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-black/80 backdrop-blur-md border border-white/10 text-[#FFBE1A] font-semibold">
-                            CO-FOUNDER
+                            FOUNDER
                           </span>
                         </div>
                       </div>

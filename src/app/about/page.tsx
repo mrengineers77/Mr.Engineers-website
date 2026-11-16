@@ -116,8 +116,8 @@ export default function AboutPage() {
                     disconnect between heavy electrical machinery and modern software systems.
                   </p>
                   <p>
-                    Co-Founders <strong className="text-white">Hariprasath J</strong> and{' '}
-                    <strong className="text-white">Santhosh M M</strong> founded MR.Engineers in
+                    Founders <strong className="text-white">Hariprasath J</strong> (Chief Engineer &amp; Manager) and{' '}
+                    <strong className="text-white">Santhosh M M</strong> (Chief Electrical Engineer) founded MR.Engineers in
                     Erode to bridge this gap. Starting with cinema auditorium lighting automation
                     panels and rapid microcontroller prototypes, the company expanded into full-scale
                     industrial automation, PLC/SCADA architecture, wireless IoT networks, and the
@@ -169,7 +169,7 @@ export default function AboutPage() {
                       <span className="text-white text-right max-w-[200px] truncate">{BRAND.registeredOffice.fullAddress}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
-                      <span className="text-text-muted">CO-FOUNDERS:</span>
+                      <span className="text-text-muted">FOUNDERS:</span>
                       <span className="text-accent font-medium">Hariprasath J &amp; Santhosh M M</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-white/[0.04]">
