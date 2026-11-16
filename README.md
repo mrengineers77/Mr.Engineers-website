@@ -88,8 +88,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ---
 
-## 6. Official Social Links
+## 6. Official Channels
 
+- **Email**: [mrengineers.contact@gmail.com](mailto:mrengineers.contact@gmail.com)
 - **LinkedIn**: [linkedin.com/in/mr-engineers-66b101450](https://www.linkedin.com/in/mr-engineers-66b101450)
 - **Instagram**: [instagram.com/_auto_doc__](https://www.instagram.com/_auto_doc__?mdxt=MTFldGs0bTZzY2Rpdw==)
 - **YouTube**: [youtube.com/@Mokkabusters](http://www.youtube.com/@Mokkabusters)

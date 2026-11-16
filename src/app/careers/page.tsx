@@ -124,7 +124,7 @@ export default function CareersPage() {
       });
     } catch {
       setFormStatus('error');
-      setErrorMessage('Failed to submit application. Please email your resume to contact@mrengineers.in.');
+      setErrorMessage('Failed to submit application. Please email your resume to mrengineers.contact@gmail.com.');
     }
   };
 

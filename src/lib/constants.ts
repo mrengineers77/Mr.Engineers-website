@@ -8,7 +8,7 @@ export const BRAND = {
   description:
     'From industrial automation to intelligent IoT solutions, MR.Engineers transforms engineering ideas into practical technology.',
   url: 'https://mrengineers.in',
-  email: 'contact@mrengineers.in',
+  email: 'mrengineers.contact@gmail.com',
   phone: '+91 XXXXX XXXXX', // Configurable placeholder
   location: 'Erode, Tamil Nadu, India',
   logo: '/images/logo.jpg',

@@ -110,7 +110,7 @@ export default function CollaborationsPage() {
       });
     } catch {
       setFormStatus('error');
-      setErrorMessage('Unable to submit inquiry at this moment. Please email contact@mrengineers.in.');
+      setErrorMessage('Unable to submit inquiry at this moment. Please email mrengineers.contact@gmail.com.');
     }
   };
 

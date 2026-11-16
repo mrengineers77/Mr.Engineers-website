@@ -93,7 +93,7 @@ export default function AcademyPage() {
       });
     } catch {
       setFormStatus('error');
-      setFeedbackMsg('Unable to submit at this moment. Please email contact@mrengineers.in directly.');
+      setFeedbackMsg('Unable to submit at this moment. Please email mrengineers.contact@gmail.com directly.');
     }
   };
 

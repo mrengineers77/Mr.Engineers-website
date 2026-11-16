@@ -133,7 +133,7 @@ function ContactFormInner() {
     } catch (err: any) {
       setFormStatus('error');
       setErrorMessage(
-        err.message || 'Submission failed. Please email contact@mrengineers.in directly.'
+        err.message || 'Submission failed. Please email mrengineers.contact@gmail.com directly.'
       );
     }
   };
